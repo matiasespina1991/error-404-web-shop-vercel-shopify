@@ -47,10 +47,10 @@ export function ProductDescription({ product }: { product: Product }) {
       {release ? (
         <div className="space-y-5 pt-2">
           <div>
-            <h2 className="mb-5 text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
+            <h2 className="mb-5 text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
               Tracklist
             </h2>
-            <ol className="space-y-2 text-sm">
+            <ol className="space-y-2 text-md">
               {release.tracks.map((track) => (
                 <li
                   key={track.position}
@@ -84,7 +84,7 @@ export function ProductDescription({ product }: { product: Product }) {
           />
 
           <div>
-            <h2 className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
+            <h2 className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
               Release details
             </h2>
             <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
