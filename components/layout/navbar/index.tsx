@@ -21,13 +21,15 @@ export async function Navbar() {
       </div>
       <div className="flex w-full items-center">
         <div className="flex w-full md:w-1/3">
-          <Link
-            href="/"
-            prefetch={true}
-            className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
-          >
-            <LogoSquare />
-          </Link>
+          <div>
+            <Link
+              href="/"
+              prefetch={true}
+              className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+            >
+              <LogoSquare />
+            </Link>
+          </div>
           {menu.length ? (
             <ul className="hidden gap-6 text-sm md:flex md:items-center">
               {menu.map((item: Menu) => (

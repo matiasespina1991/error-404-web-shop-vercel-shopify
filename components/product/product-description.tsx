@@ -30,7 +30,7 @@ export function ProductDescription({ product }: { product: Product }) {
             currencyCode={product.priceRange.maxVariantPrice.currencyCode}
           />
         </div>
-        <p className="mt-1 text-[10px] font-light text-neutral-400">
+        <p className="mt-[1px] text-[10px] font-light text-neutral-400">
           Incl. VAT plus Shipping Costs
         </p>
       </div>
