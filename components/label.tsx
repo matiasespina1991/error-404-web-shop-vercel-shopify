@@ -20,12 +20,12 @@ const Label = ({
           position === "center",
       })}
     >
-      <div className="flex w-full items-start gap-3 bg-[#171717] p-[0.844rem] text-xs font-normal leading-snug text-neutral-200">
+      <div className="flex w-full items-start gap-3 py-[0.844rem] text-xs font-normal leading-snug text-neutral-200">
         <h3 className="min-w-0 grow line-clamp-3 font-normal leading-snug text-[0.85rem] tracking-normal">
           {title}
         </h3>
         <Price
-          className="flex-none font-light tabular-nums text-neutral-300"
+          className="flex-none font-light tabular-nums text-neutral-300 text-[0.85rem]"
           amount={amount}
           currencyCode={currencyCode}
           // currencyCodeClassName="hidden @[275px]/label:inline"

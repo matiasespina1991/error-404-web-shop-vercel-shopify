@@ -22,7 +22,7 @@ export function GridTileImage({
   return (
     <div
       className={clsx(
-        "group flex h-full w-full overflow-hidden rounded-lg bg-white dark:bg-black",
+        "group flex h-full w-full overflow-hidden  bg-white dark:bg-black",
         {
           relative: label,
           "flex-col items-stretch justify-start": labelBelow,
@@ -33,16 +33,19 @@ export function GridTileImage({
     >
       <div
         className={clsx(
-          "relative w-full overflow-hidden",
+          "relative w-full overflow-hidden rounded-md",
           labelBelow ? "aspect-square shrink-0" : "h-full",
         )}
       >
         {props.src ? (
           <Image
-            className={clsx("relative h-full w-full object-cover", {
-              "transition duration-300 ease-in-out group-hover:scale-105":
-                isInteractive,
-            })}
+            className={clsx(
+              "relative overflow-hidden h-full w-full object-cover",
+              {
+                "transition duration-300 ease-in-out group-hover:scale-105":
+                  isInteractive,
+              },
+            )}
             {...props}
           />
         ) : null}

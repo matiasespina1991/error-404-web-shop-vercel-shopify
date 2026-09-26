@@ -82,7 +82,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: "28.00",
     imageUrl: r23299694.src,
     imageUrls: [r23299694Label.src],
-    tags: ["vinyls"],
+    tags: ["releases", "vinyls", "featured"],
   }),
   product({
     handle: "r-34787453",
@@ -91,7 +91,7 @@ export const MOCK_PRODUCTS: Product[] = [
       "Monkey Slayer EP by Delazar on Akasha Records (AKSH001). A five-track electronic EP spanning House, Ambient, Electro, and Techno, including a remix by Deep Mariano. Released in Spain on August 8, 2025.",
     price: "30.00",
     imageUrl: r34787453.src,
-    tags: ["vinyls"],
+    tags: ["releases", "vinyls", "featured"],
   }),
   product({
     handle: "r-36015688",
@@ -100,7 +100,7 @@ export const MOCK_PRODUCTS: Product[] = [
       "The Last Romantic by Sancturu on Error404 (ERROR404-02). A four-track electronic EP spanning Electro, House, Deep House, and Breakbeat, featuring vocals by Lourene and a rework by Light Blue File. Released in Spain in December 2025.",
     price: "32.00",
     imageUrl: r36015688.src,
-    tags: ["vinyls"],
+    tags: ["releases", "vinyls", "featured"],
   }),
   product({
     handle: "r-36497119",
@@ -109,7 +109,7 @@ export const MOCK_PRODUCTS: Product[] = [
       "Limpiaelmantel EP by Light Blue File on Akasha Records (AKSH002). A three-track electronic EP spanning Techno, Deep Techno, Dub Techno, and Tribal. Released in Spain in 2026.",
     price: "30.00",
     imageUrl: r36497119.src,
-    tags: ["vinyls"],
+    tags: ["releases", "vinyls", "featured"],
   }),
   product({
     handle: "r-38053926",
@@ -117,7 +117,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description: "A warm limited pressing from Akasha Records.",
     price: "30.00",
     imageUrl: r38053926.src,
-    tags: ["vinyls"],
+    tags: ["releases", "vinyls", "featured"],
   }),
   product({
     handle: "error404-t-shirt",
@@ -164,11 +164,11 @@ export const MOCK_COLLECTIONS: Collection[] = [
     updatedAt: "2026-09-25T00:00:00Z",
   },
   {
-    handle: "vinyls",
-    title: "Vinyls",
+    handle: "releases",
+    title: "Releases",
     description: "Limited Error404 vinyl releases.",
-    seo: { title: "Vinyls", description: "Limited Error404 vinyl releases." },
-    path: "/search/vinyls",
+    seo: { title: "Releases", description: "Limited Error404 vinyl releases." },
+    path: "/search/releases",
     updatedAt: "2026-09-25T00:00:00Z",
   },
   {

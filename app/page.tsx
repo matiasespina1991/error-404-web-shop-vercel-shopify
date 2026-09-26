@@ -13,7 +13,7 @@ export default function HomePage() {
     <>
       {/* <ThreeItemGrid /> */}
       {/* <Carousel /> */}
-      <ProductSection handle="vinyls" title="Vinyls" />
+      <ProductSection handle="releases" title="Releases" />
       <ProductSection handle="merch" title="Merch" />
       <ProductSection handle="accesories" title="Accesories" />
       <Footer />

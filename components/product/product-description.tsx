@@ -8,8 +8,8 @@ import { RecordPlayer } from "./record-player";
 import { VariantSelector } from "./variant-selector";
 
 export function ProductDescription({ product }: { product: Product }) {
-  const category = product.tags.includes("vinyls")
-    ? "Vinyls"
+  const category = product.tags.includes("releases")
+    ? "Releases"
     : product.tags.includes("merch")
       ? "Merch"
       : "Accesories";
@@ -34,13 +34,13 @@ export function ProductDescription({ product }: { product: Product }) {
           Incl. VAT plus Shipping Costs
         </p>
       </div>
-      <div className="">
+      <div>
         <AddToCart product={product} />
       </div>
       <VariantSelector options={product.options} variants={product.variants} />
       {product.descriptionHtml ? (
         <Prose
-          className="mt-7 mb-6 max-w-2xl text-base font-light leading-7 text-neutral-300 md:mt-8"
+          className="mt-6 mb-6 max-w-2xl text-base font-light leading-7 text-neutral-300 md:mt-8"
           html={product.descriptionHtml}
         />
       ) : null}
@@ -60,7 +60,9 @@ export function ProductDescription({ product }: { product: Product }) {
                   <span>
                     {track.title}{" "}
                     {track.duration ? (
-                      <span className="text-neutral-500">{track.duration}</span>
+                      <span className="text-neutral-500 ml-1">
+                        {track.duration}
+                      </span>
                     ) : null}
                     {track.vocalsBy ? (
                       <span className="mt-1 block text-xs text-neutral-400">

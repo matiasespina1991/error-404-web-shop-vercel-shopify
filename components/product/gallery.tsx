@@ -49,7 +49,7 @@ export function Gallery({
                 onClick={() => updateImage(index)}
                 aria-label={`View product image ${index + 1}: ${image.altText}`}
                 aria-pressed={index === imageIndex}
-                className={`relative block h-full w-full cursor-pointer border bg-white/15 transition-opacity hover:opacity-80 ${index === imageIndex ? "border-white/50" : "border-white/15"}`}
+                className={`relative block h-full w-full cursor-pointer border bg-white/15 transition-opacity hover:opacity-80 ${index === imageIndex ? "border-white/40" : "border-white/15"}`}
               >
                 <Image
                   alt={image.altText}
