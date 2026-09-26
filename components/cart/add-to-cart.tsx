@@ -19,7 +19,8 @@ function SubmitButton({
     "relative inline-flex w-fit items-center justify-center gap-2 rounded-full bg-[#8D75D5] px-5 py-3 text-sm tracking-wide text-white";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
-  const addToCartButtonClasses = "pr-6";
+  const addToCartButtonClasses =
+    "pb-[0.7rem] pt-[0.7rem] pr-[1.3rem] pl-[0.8rem]";
 
   if (!availableForSale) {
     return (
