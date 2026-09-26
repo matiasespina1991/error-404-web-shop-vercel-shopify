@@ -21,7 +21,7 @@ export function ProductDescription({ product }: { product: Product }) {
         <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.5em] text-neutral-400">
           {category}
         </p>
-        <h1 className="max-w-2xl text-2xl font-medium leading-tight md:text-3xl">
+        <h1 className="max-w-2xl text-[1.7rem] font-medium leading-tight md:text-3xl">
           {product.title}
         </h1>
         <div className="mt-2 text-[22px] font-light text-white md:mt-4">

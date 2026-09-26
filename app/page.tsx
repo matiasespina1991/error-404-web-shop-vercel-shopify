@@ -2,6 +2,7 @@ import { ProductSection } from "components/home/product-section";
 import Footer from "components/layout/footer";
 
 export const metadata = {
+  title: "Error404® Official Store",
   description: "Error404 official store.",
   openGraph: {
     type: "website",
