@@ -12,11 +12,11 @@ export default function SearchLayout({
 }) {
   return (
     <>
-      <div className="mx-auto flex max-w-(--breakpoint-2xl) flex-col gap-4 px-8 pb-14 sm:pb-4  text-black md:flex-row dark:text-white">
+      <div className="mx-auto flex max-w-(--breakpoint-2xl) py-4 flex-col gap-4 px-8 pb-14 sm:pb-4  text-black md:flex-row dark:text-white">
         <div className="order-first w-full flex-none md:max-w-[125px]">
           <Collections />
         </div>
-        <div className="order-last min-h-screen w-full md:order-none">
+        <div className="order-last min-h-screen pr-4 w-full md:order-none">
           <Suspense fallback={null}>
             <ChildrenWrapper>{children}</ChildrenWrapper>
           </Suspense>

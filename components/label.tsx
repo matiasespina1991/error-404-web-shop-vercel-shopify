@@ -21,7 +21,7 @@ const Label = ({
       })}
     >
       <div className="flex w-full items-start gap-3 py-[0.844rem] text-xs font-normal leading-snug text-neutral-200">
-        <h3 className="min-w-0 grow line-clamp-3 font-normal leading-snug text-[0.85rem] tracking-normal">
+        <h3 className="min-w-0 grow line-clamp-3 font-semibold sm:font-normal leading-snug text-[0.85rem] tracking-normal">
           {title}
         </h3>
         <Price
