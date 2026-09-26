@@ -28,7 +28,7 @@ const Label = ({
           className="flex-none font-light tabular-nums text-neutral-300"
           amount={amount}
           currencyCode={currencyCode}
-          currencyCodeClassName="hidden @[275px]/label:inline"
+          // currencyCodeClassName="hidden @[275px]/label:inline"
         />
       </div>
     </div>
