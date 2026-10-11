@@ -8,6 +8,8 @@ El proyecto actual sirve como base de tienda. El dashboard de Laura aporta patro
 
 La recomendación es combinar esas aportaciones de forma selectiva. Copiar cualquiera de los tres proyectos completo trasladaría también sus dependencias, datos de demostración o decisiones de otra marca.
 
+Implementación posterior: [10 · Home, eventos y entrevistas](10-home-eventos-entrevistas.md).
+
 ## Documentos
 
 | Documento                                                     | Contenido                                                                                            |

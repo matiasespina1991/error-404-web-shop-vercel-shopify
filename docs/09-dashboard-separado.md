@@ -17,6 +17,8 @@ Error404 Web/
 
 El término «editorial» de los análisis solo significaba contenido de la web; no representaba otro producto ni un requisito de arquitectura.
 
+Actualización: [10 · Home, eventos y entrevistas](10-home-eventos-entrevistas.md) describe los nuevos módulos y sustituye la limitación inicial de entrevistas pendientes.
+
 ## Integración implementada
 
 La tienda mantiene sus rutas originales y no contiene el dashboard, SDK Firebase Admin ni credenciales de administración. Añade `/about` y un lector de contenido publicado configurado con `DASHBOARD_URL`. El enlace About se añade al menú si aún no existe.

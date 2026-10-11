@@ -3,7 +3,7 @@ export default function AboutLoading() {
     <div
       role="status"
       aria-label="Loading About"
-      className="mx-auto max-w-5xl px-4 py-20"
+      className="content-shell pb-20"
     >
       <div
         aria-hidden="true"

@@ -4,16 +4,28 @@ import { Suspense } from "react";
 import { getCollections } from "lib/shopify";
 import FilterList from "./filter";
 
-async function CollectionList() {
+async function CollectionList({ basePath }: { basePath: string }) {
   const collections = await getCollections();
-  return <FilterList list={collections} title="Collections" />;
+  return (
+    <FilterList
+      list={collections.map((collection) => ({
+        ...collection,
+        path: collection.handle ? `${basePath}/${collection.handle}` : basePath,
+      }))}
+      title="Collections"
+    />
+  );
 }
 
 const skeleton = "mb-3 h-4 w-5/6 animate-pulse rounded-sm";
 const activeAndTitles = "bg-neutral-800 dark:bg-neutral-300";
 const items = "bg-neutral-400 dark:bg-neutral-700";
 
-export default function Collections() {
+export default function Collections({
+  basePath = "/search",
+}: {
+  basePath?: string;
+}) {
   return (
     <Suspense
       fallback={
@@ -31,7 +43,7 @@ export default function Collections() {
         </div>
       }
     >
-      <CollectionList />
+      <CollectionList basePath={basePath} />
     </Suspense>
   );
 }

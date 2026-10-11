@@ -1,3 +1,4 @@
+import { BrandHeading } from "components/content/brand-heading";
 import type { Metadata } from "next";
 
 import Prose from "components/prose";
@@ -33,7 +34,9 @@ export default async function Page(props: {
 
   return (
     <>
-      <h1 className="mb-8 text-5xl font-bold">{page.title}</h1>
+      <BrandHeading as="h1" variant="page" className="mb-6">
+        {page.title}
+      </BrandHeading>
       <Prose className="mb-8" html={page.body} />
       <p className="text-sm italic">
         {`This document was last updated on ${new Intl.DateTimeFormat(

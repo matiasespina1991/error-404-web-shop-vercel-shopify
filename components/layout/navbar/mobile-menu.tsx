@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, Transition } from "@headlessui/react";
-import Link from "next/link";
+import NavLink from "./nav-link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, Suspense, useEffect, useState } from "react";
 
@@ -19,7 +19,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth >= 1024) {
         setIsOpen(false);
       }
     };
@@ -36,9 +36,9 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
       <button
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md text-black transition-colors md:hidden dark:text-white"
+        className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors lg:hidden"
       >
-        <Bars3Icon className="h-5" />
+        <Bars3Icon className="size-7" aria-hidden="true" />
       </button>
       <Transition show={isOpen}>
         <Dialog onClose={closeMobileMenu} className="relative z-50">
@@ -78,19 +78,20 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   </Suspense>
                 </div>
                 {menu.length ? (
-                  <ul className="flex w-full flex-col">
+                  <ul className="header-menu-type flex w-full flex-col">
                     {menu.map((item: Menu) => (
                       <li
-                        className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
+                        className="py-2 text-black transition-colors hover:text-neutral-500 dark:text-white"
                         key={item.title}
                       >
-                        <Link
+                        <NavLink
                           href={item.path}
+                          className="flex min-h-11 items-center"
                           prefetch={true}
                           onClick={closeMobileMenu}
                         >
                           {item.title}
-                        </Link>
+                        </NavLink>
                       </li>
                     ))}
                   </ul>

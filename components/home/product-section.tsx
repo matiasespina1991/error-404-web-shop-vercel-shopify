@@ -1,3 +1,4 @@
+import { BrandHeading } from "components/content/brand-heading";
 import Grid from "components/grid";
 import ProductGridItems from "components/layout/product-grid-items";
 import { getCollectionProducts } from "lib/shopify";
@@ -18,12 +19,13 @@ export async function ProductSection({
       className="px-4 py-10 pt-3 sm:py-10 md:px-12"
       aria-labelledby={`${handle}-heading`}
     >
-      <h2
+      <BrandHeading
+        as="h2"
         id={`${handle}-heading`}
-        className="mb-5 text-left text-sm xs:text-xs font-medium uppercase tracking-[0.2em] text-neutral-400"
+        className="mb-5 text-left text-neutral-300"
       >
         {title}
-      </h2>
+      </BrandHeading>
       <Grid className="grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
         <ProductGridItems
           products={products}

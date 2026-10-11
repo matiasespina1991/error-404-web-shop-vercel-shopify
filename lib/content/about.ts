@@ -9,7 +9,7 @@ export type PublishedAbout = {
   seoDescription: string;
 };
 
-function dashboardOrigin(): string | null {
+export function dashboardOrigin(): string | null {
   const value = process.env.DASHBOARD_URL;
   if (!value) return null;
   const url = new URL(value);

@@ -1,3 +1,4 @@
+import { BrandHeading } from "components/content/brand-heading";
 import type { Metadata } from "next";
 import Footer from "components/layout/footer";
 import { aboutImageUrl, getPublishedAbout } from "lib/content/about";
@@ -17,13 +18,10 @@ export default async function AboutPage() {
   const content = await getPublishedAbout();
   return (
     <>
-      <article className="mx-auto max-w-5xl px-4 py-12 md:px-8 md:py-20">
-        <p className="mb-5 text-xs uppercase tracking-[0.25em] text-[#b7a2ef]">
-          Error404
-        </p>
-        <h1 className="mb-8 text-4xl font-medium tracking-tight md:text-6xl">
+      <article className="content-shell pb-20">
+        <BrandHeading as="h1" variant="page" className="mb-6">
           {content?.title || "About"}
-        </h1>
+        </BrandHeading>
         {content ? (
           <>
             <p className="mb-10 max-w-3xl whitespace-pre-line text-xl font-light leading-relaxed text-neutral-300 md:text-2xl">
