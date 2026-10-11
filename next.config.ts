@@ -1,4 +1,5 @@
 export default {
+  turbopack: { root: process.cwd() },
   experimental: {
     ppr: true,
     inlineCss: true,

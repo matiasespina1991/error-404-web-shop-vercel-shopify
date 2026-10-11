@@ -2,6 +2,8 @@
 
 Fecha de revisión: **11 de octubre de 2026**.
 
+**Actualización de arquitectura:** el usuario indicó que el dashboard debe ser un proyecto separado en `dashboard.tudominio.com`, y que el shop pertenece a Shopify. Ver [09 · Dashboard separado](09-dashboard-separado.md); esta decisión prevalece sobre las propuestas anteriores de integrar el panel en la tienda.
+
 El proyecto actual sirve como base de tienda. El dashboard de Laura aporta patrones de gestión editorial; WordPress muestra el dominio musical que puede perderse en la migración; 22 Recordings demuestra cómo extender esta misma familia de plantilla con identidad, páginas de marca y una integración comercial más desarrollada.
 
 La recomendación es combinar esas aportaciones de forma selectiva. Copiar cualquiera de los tres proyectos completo trasladaría también sus dependencias, datos de demostración o decisiones de otra marca.
