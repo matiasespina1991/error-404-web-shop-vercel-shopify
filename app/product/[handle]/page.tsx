@@ -82,7 +82,7 @@ export default async function ProductPage(props: {
         }}
       />
       <div className="mx-auto max-w-(--breakpoint-2xl) px-4">
-        <div className="flex flex-col gap-4 bg-white py-6 px-3 sm:p-6 md:gap-8 md:p-8 lg:flex-row lg:gap-12 dark:bg-black">
+        <div className="flex flex-col gap-4 bg-white pb-6 px-3 sm:px-6 sm:pb-6 md:gap-8 md:px-8 md:pb-8 lg:flex-row lg:gap-12 dark:bg-black">
           <div className="w-full min-w-0 basis-full lg:basis-1/2">
             <Suspense
               fallback={

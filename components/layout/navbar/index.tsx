@@ -1,59 +1,50 @@
 import CartModal from "components/cart/modal";
 import LogoSquare from "components/logo-square";
-import { getMenu } from "lib/shopify";
-import { Menu } from "lib/shopify/types";
 import Link from "next/link";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
+import NavLink from "./nav-link";
 import Search, { SearchSkeleton } from "./search";
 
-const { SITE_NAME } = process.env;
-
 export async function Navbar() {
-  const menu = await getMenu("next-js-frontend-header-menu");
+  const pages = [
+    { title: "Home", path: "/" },
+    { title: "Shop", path: "/shop" },
+    { title: "Events", path: "/events" },
+    { title: "Interviews", path: "/interviews" },
+    { title: "About", path: "/about" },
+  ];
+  const menu = pages;
 
   return (
-    <nav className="relative flex items-center justify-between p-4 lg:px-6">
-      <div className="block flex-none md:hidden">
+    <nav aria-label="Main navigation" className="site-header">
+      <div className="site-header-menu-toggle">
         <Suspense fallback={null}>
           <MobileMenu menu={menu} />
         </Suspense>
       </div>
-      <div className="flex w-full items-center">
-        <div className="flex w-full md:w-1/3">
-          <div>
-            <Link
-              href="/"
-              prefetch={true}
-              className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+      <Link href="/" aria-label="Error404 home" className="site-header-logo">
+        <LogoSquare />
+      </Link>
+      <ul className="site-header-links header-menu-type">
+        {menu.map((item) => (
+          <li key={item.path}>
+            <NavLink
+              href={item.path}
+              className="text-neutral-400 hover:text-white"
             >
-              <LogoSquare />
-            </Link>
-          </div>
-          {menu.length ? (
-            <ul className="hidden gap-6 text-sm md:flex md:items-center">
-              {menu.map((item: Menu) => (
-                <li key={item.title}>
-                  <Link
-                    href={item.path}
-                    prefetch={true}
-                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-        <div className="hidden justify-center md:flex md:w-1/3">
-          <Suspense fallback={<SearchSkeleton />}>
-            <Search />
-          </Suspense>
-        </div>
-        <div className="flex justify-end md:w-1/3">
-          <CartModal />
-        </div>
+              {item.title}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+      <div className="site-header-search">
+        <Suspense fallback={<SearchSkeleton expandable />}>
+          <Search expandable />
+        </Suspense>
+      </div>
+      <div className="site-header-cart">
+        <CartModal />
       </div>
     </nav>
   );
