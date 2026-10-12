@@ -50,7 +50,7 @@ export default async function InterviewPage({ params }: Props) {
           />
         )}
         <div className="mx-auto max-w-2xl">
-          <Paragraphs text={entry.body} />
+          <Paragraphs text={entry.body} format={entry.bodyFormat} />
         </div>
         {entry.gallery.length > 0 && (
           <div className="mt-12 grid gap-4 sm:grid-cols-2">

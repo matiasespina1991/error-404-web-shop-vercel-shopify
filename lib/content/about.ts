@@ -1,9 +1,11 @@
+import type { BodyFormat } from "./rich-text-format";
 import { cache } from "react";
 
 export type PublishedAbout = {
   title: string;
   intro: string;
   body: string;
+  bodyFormat?: BodyFormat;
   imageId: string | null;
   imageAlt: string;
   seoDescription: string;

@@ -11,6 +11,7 @@
 
 # next.js
 /.next/
+/.next-verification/
 /out/
 
 # production
@@ -37,3 +38,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# Firebase service account credentials
+/input/*firebase-adminsdk*.json

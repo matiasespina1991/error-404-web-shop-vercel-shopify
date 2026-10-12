@@ -305,3 +305,66 @@ button {
 main > .content-section:first-of-type {
   padding-top: 0;
 }
+
+/* Published Quill content: the same semantic formatting in the website and preview. */
+.rich-content {
+  overflow-wrap: anywhere;
+}
+.rich-content > * + * {
+  margin-top: 1.25rem;
+}
+.rich-content h1,
+.rich-content h2,
+.rich-content h3,
+.rich-content h4,
+.rich-content h5,
+.rich-content h6 {
+  font-weight: 600;
+  line-height: 1.35;
+}
+.rich-content h1 {
+  font-size: 1.75em;
+}
+.rich-content h2 {
+  font-size: 1.5em;
+}
+.rich-content h3 {
+  font-size: 1.25em;
+}
+.rich-content h4 {
+  font-size: 1.125em;
+}
+.rich-content strong,
+.rich-content b {
+  font-weight: 700;
+}
+.rich-content em,
+.rich-content i {
+  font-style: italic;
+}
+.rich-content u,
+.rich-content a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.rich-content ol,
+.rich-content ul {
+  padding-inline-start: 1.5rem;
+}
+.rich-content ol {
+  list-style-type: decimal;
+}
+.rich-content ul,
+.rich-content li[data-list="bullet"] {
+  list-style-type: disc;
+}
+.rich-content li + li {
+  margin-top: 0.375rem;
+}
+.rich-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-block: 1.25rem;
+}

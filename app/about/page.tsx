@@ -1,3 +1,4 @@
+import { RichText } from "components/content/rich-text";
 import { BrandHeading } from "components/content/brand-heading";
 import type { Metadata } from "next";
 import Footer from "components/layout/footer";
@@ -34,16 +35,11 @@ export default async function AboutPage() {
                 className="mb-12 max-h-[650px] w-full rounded-md object-contain"
               />
             )}
-            <div className="max-w-2xl space-y-6 text-base font-light leading-8 text-neutral-300">
-              {content.body
-                .split(/\n\s*\n/)
-                .filter(Boolean)
-                .map((paragraph, i) => (
-                  <p key={i} className="whitespace-pre-line">
-                    {paragraph}
-                  </p>
-                ))}
-            </div>
+            <RichText
+              body={content.body}
+              format={content.bodyFormat}
+              className="max-w-2xl text-base font-light leading-8 text-neutral-300"
+            />
           </>
         ) : (
           <p className="text-neutral-400">

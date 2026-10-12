@@ -1,3 +1,6 @@
+import { SLUG, IMAGE_ID } from "./patterns";
+import { parseBody, hasBodyContent } from "./rich-text";
+import type { BodyFormat } from "./rich-text-format";
 // Version 1 public contract, mirrored in the independent dashboard project.
 export type ContentKind = "events" | "interviews";
 export type ContentImage = { id: string; alt: string };
@@ -6,6 +9,7 @@ type CommonContent = {
   title: string;
   summary: string;
   body: string;
+  bodyFormat?: BodyFormat;
   cover: ContentImage | null;
   gallery: ContentImage[];
   seoDescription: string;
@@ -52,8 +56,7 @@ export type EntryDocument = {
   updatedAt: string | null;
   updatedBy: string | null;
 };
-export const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-export const IMAGE_ID = /^[a-z0-9]+-[a-f0-9-]{36}$/;
+export { SLUG, IMAGE_ID } from "./patterns";
 export function isContentKind(value: string): value is ContentKind {
   return value === "events" || value === "interviews";
 }
@@ -152,14 +155,17 @@ export function validateEntry(
     slug,
     title: text("title", 160),
     summary: text("summary", 1000),
-    body: text("body", 30000),
+    ...parseBody(data.body, data.bodyFormat),
     seoDescription: text("seoDescription", 320),
     cover: data.cover === null ? null : image(data.cover),
     gallery: data.gallery.map(image),
   };
   if (
     publishing &&
-    (!common.title || !common.summary || !common.body || !common.cover)
+    (!common.title ||
+      !common.summary ||
+      !hasBodyContent(common.body, common.bodyFormat) ||
+      !common.cover)
   )
     return fail(
       "Para publicar completá título, resumen, texto e imagen principal.",

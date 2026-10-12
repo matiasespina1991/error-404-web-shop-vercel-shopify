@@ -174,7 +174,7 @@ export default async function EventPage({ params }: Props) {
             </dl>
             <section>
               <h2 className="content-eyebrow mb-5">About the event</h2>
-              <Paragraphs text={event.body} />
+              <Paragraphs text={event.body} format={event.bodyFormat} />
             </section>
           </div>
         </div>

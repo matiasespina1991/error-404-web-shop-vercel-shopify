@@ -1,3 +1,5 @@
+import { RichText } from "./rich-text";
+import type { BodyFormat } from "lib/content/rich-text-format";
 import Link from "next/link";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import { contentImageUrl } from "lib/content/feed";
@@ -45,17 +47,18 @@ export function InterviewCard({
     </Link>
   );
 }
-export function Paragraphs({ text }: { text: string }) {
+export function Paragraphs({
+  text,
+  format,
+}: {
+  text: string;
+  format?: BodyFormat;
+}) {
   return (
-    <div className="space-y-6 text-base leading-8 font-normal text-neutral-300">
-      {text
-        .split(/\n\s*\n/)
-        .filter(Boolean)
-        .map((paragraph, i) => (
-          <p key={i} className="whitespace-pre-line">
-            {paragraph}
-          </p>
-        ))}
-    </div>
+    <RichText
+      body={text}
+      format={format}
+      className="text-base leading-8 font-normal text-neutral-300"
+    />
   );
 }
