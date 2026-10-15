@@ -145,8 +145,18 @@ export function mockPage(
           (timeline === "past" ? item.endsAt < now : item.endsAt >= now)),
     )
     .sort((a, b) => {
-      const dateA = a.kind === "events" ? a.endsAt : a.publishedDate;
-      const dateB = b.kind === "events" ? b.endsAt : b.publishedDate;
+      const dateA =
+        a.kind === "events"
+          ? a.endsAt
+          : a.kind === "interviews"
+            ? a.publishedDate
+            : "";
+      const dateB =
+        b.kind === "events"
+          ? b.endsAt
+          : b.kind === "interviews"
+            ? b.publishedDate
+            : "";
       return kind === "events" && timeline !== "past"
         ? dateA.localeCompare(dateB)
         : dateB.localeCompare(dateA);

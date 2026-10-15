@@ -1,3 +1,4 @@
+import ProductCardTitle from "components/product/card-title";
 import Grid from "components/grid";
 import { GridTileImage } from "components/grid/tile";
 import { Product } from "lib/shopify/types";
@@ -22,7 +23,7 @@ export default function ProductGridItems({
             <GridTileImage
               alt={product.title}
               label={{
-                title: product.title,
+                title: <ProductCardTitle product={product} />,
                 amount: product.priceRange.maxVariantPrice.amount,
                 currencyCode: product.priceRange.maxVariantPrice.currencyCode,
               }}

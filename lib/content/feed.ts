@@ -21,7 +21,12 @@ async function read(path: string) {
     signal: AbortSignal.timeout(8000),
   });
   if (response.status === 404)
-    return { schemaVersion: 1, content: null, source: "firebase" };
+    return {
+      schemaVersion: 1,
+      content: null,
+      source: "firebase",
+      notFound: true,
+    };
   if (!response.ok) throw new Error("The content service is unavailable.");
   const result = await response.json();
   if (
@@ -40,6 +45,9 @@ export const getContentPage = cache(
     const params = new URLSearchParams({ timeline });
     if (cursor) params.set("cursor", cursor);
     const result = await read(`${kind}?${params}`);
+    // Allow the public app to roll out before the new dashboard endpoint exists.
+    if (kind === "releases" && result?.notFound)
+      return { items: [], cursor: null, source: "firebase" };
     if (!result || result.source === "mock")
       return mockPage(kind, timeline, cursor);
     if (

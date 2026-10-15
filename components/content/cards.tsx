@@ -30,7 +30,7 @@ export function InterviewCard({
           {entry.category} / {entry.artist}
         </p>
         <h3
-          className={`mt-2 flex items-start justify-between gap-3 font-medium tracking-tight ${compact ? "text-sm" : "text-xl"}`}
+          className={`mt-2 flex items-start justify-between gap-3 font-medium tracking-tight ${compact ? "text-sm uppercase" : "text-xl"}`}
         >
           {entry.title}
           <ArrowUpRightIcon

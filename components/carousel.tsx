@@ -1,3 +1,4 @@
+import ProductCardTitle from "components/product/card-title";
 import { getCollectionProducts } from "lib/shopify";
 import Link from "next/link";
 import { GridTileImage } from "./grid/tile";
@@ -28,7 +29,7 @@ export async function Carousel() {
               <GridTileImage
                 alt={product.title}
                 label={{
-                  title: product.title,
+                  title: <ProductCardTitle product={product} />,
                   amount: product.priceRange.maxVariantPrice.amount,
                   currencyCode: product.priceRange.maxVariantPrice.currencyCode,
                 }}

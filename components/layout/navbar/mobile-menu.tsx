@@ -8,6 +8,7 @@ import { Fragment, Suspense, useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LogoSquare from "components/logo-square";
 import { Menu } from "lib/shopify/types";
+import { shareTech } from "lib/fonts";
 import Search, { SearchSkeleton } from "./search";
 
 export default function MobileMenu({ menu }: { menu: Menu[] }) {
@@ -19,7 +20,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1280) {
         setIsOpen(false);
       }
     };
@@ -36,7 +37,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
       <button
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors lg:hidden"
+        className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors xl:hidden"
       >
         <Bars3Icon className="size-7" aria-hidden="true" />
       </button>
@@ -78,7 +79,10 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   </Suspense>
                 </div>
                 {menu.length ? (
-                  <ul className="header-menu-type flex w-full flex-col">
+                  <ul
+                    className="header-menu-type flex w-full flex-col"
+                    style={{ fontFamily: shareTech.style.fontFamily }}
+                  >
                     {menu.map((item: Menu) => (
                       <li
                         className="py-2 text-black transition-colors hover:text-neutral-500 dark:text-white"

@@ -11,13 +11,14 @@ export function BrandHeading({
   as?: "h1" | "h2";
   variant?: "section" | "page";
 }) {
+  const font = microgramma;
   return (
     <Tag
       {...props}
-      className={`${microgramma.className} ${variant === "page" ? "content-title" : "section-title"} ${className}`}
+      className={`${font.className} ${variant === "page" ? "content-title" : "section-title"} ${className}`}
       style={{
         ...style,
-        fontFamily: microgramma.style.fontFamily,
+        fontFamily: font.style.fontFamily,
         letterSpacing: "0.03em",
       }}
     />

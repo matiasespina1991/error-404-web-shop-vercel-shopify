@@ -1,3 +1,4 @@
+import ProductCardTitle from "components/product/card-title";
 import { GridTileImage } from "components/grid/tile";
 import Footer from "components/layout/footer";
 import { Gallery } from "components/product/gallery";
@@ -136,7 +137,7 @@ async function RelatedProducts({ id }: { id: string }) {
               <GridTileImage
                 alt={product.title}
                 label={{
-                  title: product.title,
+                  title: <ProductCardTitle product={product} />,
                   amount: product.priceRange.maxVariantPrice.amount,
                   currencyCode: product.priceRange.maxVariantPrice.currencyCode,
                 }}

@@ -23,13 +23,10 @@ export default async function EventsPage({
   return (
     <>
       <div className="content-shell pb-16">
-        <header className="mb-10 md:mb-16">
+        <header className="mb-4">
           <BrandHeading as="h1" variant="page">
             Events
           </BrandHeading>
-          <p className="mt-5 max-w-lg text-neutral-400">
-            Places to meet. Records to share. Nights to remember.
-          </p>
         </header>
         <nav aria-label="Event timeline" className="mb-8 flex gap-7 text-sm">
           {["upcoming", "past"].map((value) => (

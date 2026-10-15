@@ -1,6 +1,7 @@
 import CartModal from "components/cart/modal";
 import LogoSquare from "components/logo-square";
 import Link from "next/link";
+import { shareTech } from "lib/fonts";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
 import NavLink from "./nav-link";
@@ -9,6 +10,7 @@ import Search, { SearchSkeleton } from "./search";
 export async function Navbar() {
   const pages = [
     { title: "Home", path: "/" },
+    { title: "Releases", path: "/releases" },
     { title: "Shop", path: "/shop" },
     { title: "Events", path: "/events" },
     { title: "Interviews", path: "/interviews" },
@@ -23,28 +25,33 @@ export async function Navbar() {
           <MobileMenu menu={menu} />
         </Suspense>
       </div>
-      <Link href="/" aria-label="Error404 home" className="site-header-logo">
-        <LogoSquare />
-      </Link>
-      <ul className="site-header-links header-menu-type">
+      <ul
+        className="site-header-links header-menu-type"
+        style={{ fontFamily: shareTech.style.fontFamily }}
+      >
         {menu.map((item) => (
           <li key={item.path}>
             <NavLink
               href={item.path}
-              className="text-neutral-400 hover:text-white"
+              className="text-neutral-200 hover:text-white"
             >
               {item.title}
             </NavLink>
           </li>
         ))}
       </ul>
-      <div className="site-header-search">
-        <Suspense fallback={<SearchSkeleton expandable />}>
-          <Search expandable />
-        </Suspense>
-      </div>
-      <div className="site-header-cart">
-        <CartModal />
+      <Link href="/" aria-label="Error404 home" className="site-header-logo">
+        <LogoSquare />
+      </Link>
+      <div className="site-header-actions">
+        <div className="site-header-search">
+          <Suspense fallback={<SearchSkeleton expandable />}>
+            <Search expandable />
+          </Suspense>
+        </div>
+        <div className="site-header-cart">
+          <CartModal />
+        </div>
       </div>
     </nav>
   );

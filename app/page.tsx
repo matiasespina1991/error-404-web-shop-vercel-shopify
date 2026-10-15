@@ -1,3 +1,4 @@
+import ProductCardTitle from "components/product/card-title";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "components/layout/footer";
@@ -6,10 +7,11 @@ import { ContentRail } from "components/content/rail";
 import { InterviewCard } from "components/content/cards";
 import { EventList, eventDate } from "components/content/event-list";
 import { BrandHeading } from "components/content/brand-heading";
-import { getCollectionProducts } from "lib/shopify";
+import { getProducts } from "lib/shopify";
 import { contentImageUrl, getContentPage } from "lib/content/feed";
 import { Newsletter } from "components/home/newsletter";
 import type { EventContent, InterviewContent } from "lib/content/entries";
+import { ReleaseCard } from "components/releases/card";
 export async function generateMetadata() {
   const [events, interviews] = await Promise.all([
     getContentPage("events"),
@@ -26,14 +28,14 @@ export async function generateMetadata() {
   };
 }
 export default async function HomePage() {
-  const [releases, interviews, events] = await Promise.all([
-    getCollectionProducts({
-      collection: "releases",
+  const [products, interviews, events, releases] = await Promise.all([
+    getProducts({
       sortKey: "CREATED_AT",
       reverse: true,
     }),
     getContentPage("interviews"),
     getContentPage("events"),
+    getContentPage("releases"),
   ]);
   const upcomingEvents = (events.items as EventContent[])
     .filter((event) => Date.parse(event.endsAt) >= Date.now())
@@ -41,18 +43,94 @@ export default async function HomePage() {
   const nextEvent = upcomingEvents.find(
     (event) => event.ticketStatus !== "cancelled",
   );
+  const followingEvents = upcomingEvents
+    .filter((event) => !nextEvent?.cover || event.slug !== nextEvent.slug)
+    .slice(0, 4);
   return (
     <>
       <h1 className="sr-only">Error404 — Records, interviews and events</h1>
       <ContentRail
         title="Releases"
         link={
-          <Link href="/shop/releases" className="hover:text-white">
+          <Link href="/releases" className="hover:text-white">
             All releases ↗
           </Link>
         }
       >
-        {releases.slice(0, 12).map((product) => (
+        {releases.items.slice(0, 12).map(
+          (entry) =>
+            entry.kind === "releases" && (
+              <li key={entry.slug} className="record-slide">
+                <ReleaseCard release={entry} splitTitle />
+              </li>
+            ),
+        )}
+        {!releases.items.length && (
+          <li className="py-6 text-sm text-neutral-400">
+            New releases coming soon.
+          </li>
+        )}
+      </ContentRail>
+      <section className="content-section" aria-labelledby="home-events-title">
+        <div className="mb-5 flex flex-col items-start gap-2">
+          <BrandHeading id="home-events-title">Next Events</BrandHeading>
+          <Link
+            href="/events"
+            className="text-xs text-neutral-300 hover:text-white"
+          >
+            See all events ↗
+          </Link>
+        </div>
+        <div
+          className={`grid items-start gap-8 lg:gap-12 ${nextEvent?.cover ? "lg:grid-cols-[340px_minmax(0,1fr)]" : ""}`}
+        >
+          {nextEvent?.cover && (
+            <figure className="w-full max-w-[340px]">
+              <Link
+                href={`/events/${nextEvent.slug}`}
+                aria-label={`View ${nextEvent.title}`}
+                className="block overflow-hidden rounded-md"
+              >
+                <img
+                  src={contentImageUrl(nextEvent.cover.id)}
+                  alt={nextEvent.cover.alt}
+                  fetchPriority="high"
+                  className="max-h-[420px] w-full object-contain object-left"
+                />
+              </Link>
+              <figcaption className="mt-3 text-left text-sm">
+                <Link
+                  href={`/events/${nextEvent.slug}`}
+                  className="hover:underline"
+                >
+                  {nextEvent.title}
+                </Link>
+                <p className="mt-1 text-xs text-neutral-400">
+                  <time dateTime={nextEvent.startsAt}>
+                    {eventDate(nextEvent)}
+                  </time>
+                  {" · "}
+                  {nextEvent.venue} · {nextEvent.city}
+                </p>
+              </figcaption>
+            </figure>
+          )}
+          {(followingEvents.length > 0 || !nextEvent?.cover) && (
+            <div className="min-w-0">
+              <EventList events={followingEvents} compact />
+            </div>
+          )}
+        </div>
+      </section>
+      <ContentRail
+        title="Shop"
+        link={
+          <Link href="/shop" className="hover:text-white">
+            To the shop ↗
+          </Link>
+        }
+      >
+        {products.slice(0, 12).map((product) => (
           <li key={product.id} className="record-slide">
             <Link
               href={`/product/${product.handle}`}
@@ -69,7 +147,7 @@ export default async function HomePage() {
               </div>
               <div className="flex grow flex-col gap-1.5 pt-3">
                 <h3 className="line-clamp-3 text-sm font-medium">
-                  {product.title}
+                  <ProductCardTitle product={product} />
                 </h3>
                 <Price
                   amount={product.priceRange.maxVariantPrice.amount}
@@ -100,49 +178,7 @@ export default async function HomePage() {
           </li>
         )}
       </ContentRail>
-      <section className="content-section" aria-labelledby="home-events-title">
-        <div className="mb-5 flex flex-col items-start gap-2">
-          <BrandHeading id="home-events-title">Next Events</BrandHeading>
-          <Link
-            href="/events"
-            className="text-xs text-neutral-300 hover:text-white"
-          >
-            See all events ↗
-          </Link>
-        </div>
-        {nextEvent?.cover && (
-          <figure className="mb-8 w-full max-w-[340px]">
-            <Link
-              href={`/events/${nextEvent.slug}`}
-              aria-label={`View ${nextEvent.title}`}
-              className="block overflow-hidden rounded-md"
-            >
-              <img
-                src={contentImageUrl(nextEvent.cover.id)}
-                alt={nextEvent.cover.alt}
-                loading="lazy"
-                className="max-h-[420px] w-full object-contain object-left"
-              />
-            </Link>
-            <figcaption className="mt-3 text-left text-sm">
-              <Link
-                href={`/events/${nextEvent.slug}`}
-                className="hover:underline"
-              >
-                {nextEvent.title}
-              </Link>
-              <p className="mt-1 text-xs text-neutral-400">
-                <time dateTime={nextEvent.startsAt}>
-                  {eventDate(nextEvent)}
-                </time>
-                {" · "}
-                {nextEvent.venue} · {nextEvent.city}
-              </p>
-            </figcaption>
-          </figure>
-        )}
-        <EventList events={upcomingEvents.slice(0, 4)} compact />
-      </section>
+
       <Newsletter />
       <Footer />
     </>

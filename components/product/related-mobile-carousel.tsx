@@ -1,5 +1,7 @@
 "use client";
 
+import ProductCardTitle from "components/product/card-title";
+
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Price from "components/price";
@@ -110,7 +112,7 @@ export function RelatedMobileCarousel({ products }: { products: Product[] }) {
                 </div>
                 <div className="flex grow flex-col items-start gap-2 bg-[#171717] p-3 text-xs leading-snug">
                   <h4 className="line-clamp-3 font-medium text-neutral-200">
-                    {product.title}
+                    <ProductCardTitle product={product} />
                   </h4>
                   <Price
                     amount={product.priceRange.maxVariantPrice.amount}
@@ -129,9 +131,7 @@ export function RelatedMobileCarousel({ products }: { products: Product[] }) {
           className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-linear-to-l from-black to-transparent"
         />
       </div>
-      <div className="mt-3 flex items-center justify-end gap-2">
-        {arrows}
-      </div>
+      <div className="mt-3 flex items-center justify-end gap-2">{arrows}</div>
     </section>
   );
 }

@@ -6,7 +6,7 @@ export default function LogoSquare({ size }: { size?: "sm" | undefined }) {
   return (
     <div
       className={clsx("relative flex flex-none items-center justify-center", {
-        "h-[40px] w-[120px]": !size,
+        "h-[48px] w-[144px] md:h-[60px] md:w-[180px]": !size,
         "h-[30px] w-[85px]": size === "sm",
       })}
     >
@@ -15,7 +15,7 @@ export default function LogoSquare({ size }: { size?: "sm" | undefined }) {
         alt=""
         fill
         priority={!size}
-        sizes={size ? "85px" : "120px"}
+        sizes={size ? "85px" : "(min-width: 768px) 180px, 144px"}
         className="object-contain"
       />
     </div>

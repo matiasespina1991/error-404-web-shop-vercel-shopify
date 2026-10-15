@@ -1,3 +1,4 @@
+import ProductCardTitle from "components/product/card-title";
 import { GridTileImage } from "components/grid/tile";
 import { getCollectionProducts } from "lib/shopify";
 import type { Product } from "lib/shopify/types";
@@ -25,7 +26,7 @@ function ThreeItemGridItem({
           alt={item.title}
           label={{
             position: "bottom",
-            title: item.title as string,
+            title: <ProductCardTitle product={item} />,
             amount: item.priceRange.maxVariantPrice.amount,
             currencyCode: item.priceRange.maxVariantPrice.currencyCode,
           }}
