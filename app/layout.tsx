@@ -11,6 +11,12 @@ const { SITE_NAME } = process.env;
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
+  icons: {
+    icon: [
+      { url: "/icons/error404-v2.png", type: "image/png", sizes: "48x48" },
+    ],
+    shortcut: "/icons/error404-v2.png",
+  },
   title: {
     default: SITE_NAME!,
     template: `%s | ${SITE_NAME}`,

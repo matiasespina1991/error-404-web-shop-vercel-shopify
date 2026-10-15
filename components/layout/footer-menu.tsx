@@ -1,45 +1,28 @@
-"use client";
-
-import clsx from "clsx";
-import { Menu } from "lib/shopify/types";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import type { Menu } from "lib/shopify/types";
+import NavLink from "./navbar/nav-link";
 
 export function FooterMenuItem({ item }: { item: Menu }) {
-  const pathname = usePathname();
-  const [active, setActive] = useState(pathname === item.path);
-
-  useEffect(() => {
-    setActive(pathname === item.path);
-  }, [pathname, item.path]);
-
   return (
     <li>
-      <Link
+      <NavLink
         href={item.path}
-        className={clsx(
-          "block p-2 text-lg underline-offset-4 hover:text-black hover:underline md:inline-block md:text-sm dark:hover:text-neutral-300",
-          {
-            "text-black dark:text-neutral-300": active,
-          },
-        )}
+        className="inline-block py-1 leading-tight text-neutral-200 hover:text-white"
+        style={{ textDecoration: "none" }}
       >
         {item.title}
-      </Link>
+      </NavLink>
     </li>
   );
 }
 
 export default function FooterMenu({ menu }: { menu: Menu[] }) {
   if (!menu.length) return null;
-
   return (
-    <nav>
-      <ul>
-        {menu.map((item: Menu) => {
-          return <FooterMenuItem key={item.title} item={item} />;
-        })}
+    <nav aria-label="Footer navigation">
+      <ul className="header-menu-type md:grid md:grid-flow-col md:grid-rows-3 md:gap-x-10">
+        {menu.map((item) => (
+          <FooterMenuItem key={item.path} item={item} />
+        ))}
       </ul>
     </nav>
   );

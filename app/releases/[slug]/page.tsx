@@ -1,3 +1,4 @@
+import { LinkArrow } from "components/icons/link-arrow";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "components/layout/footer";
@@ -96,7 +97,7 @@ export default async function ReleasePage({ params }: Props) {
                 rel="noopener noreferrer"
                 className="content-button mt-6"
               >
-                Buy release ↗
+                Buy release <LinkArrow />
               </a>
             )}
             <section className="mt-8" aria-labelledby="release-tracklist">

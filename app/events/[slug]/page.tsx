@@ -1,3 +1,4 @@
+import { LinkArrow } from "components/icons/link-arrow";
 import { BrandHeading } from "components/content/brand-heading";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -68,7 +69,7 @@ export default async function EventPage({ params }: Props) {
                   target="_blank"
                   className="content-button"
                 >
-                  Get tickets {event.price && `· ${event.price}`} ↗
+                  Get tickets {event.price && `· ${event.price}`} <LinkArrow />
                 </a>
               ) : (
                 <span className="rounded-full bg-white/10 px-5 py-3 text-sm">
@@ -86,7 +87,7 @@ export default async function EventPage({ params }: Props) {
                   rel="noreferrer"
                   className="content-button secondary-content"
                 >
-                  Facebook event ↗
+                  Facebook event <LinkArrow />
                 </a>
               )}
             </div>
@@ -133,7 +134,7 @@ export default async function EventPage({ params }: Props) {
                     rel="noreferrer"
                     className="mt-2 block underline underline-offset-4"
                   >
-                    Get directions ↗
+                    Get directions <LinkArrow />
                   </a>
                 )}
               </dd>
@@ -166,7 +167,7 @@ export default async function EventPage({ params }: Props) {
                       rel="noreferrer"
                       className="underline"
                     >
-                      Visit website ↗
+                      Visit website <LinkArrow />
                     </a>
                   </dd>
                 </>

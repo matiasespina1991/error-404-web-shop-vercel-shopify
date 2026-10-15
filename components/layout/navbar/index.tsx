@@ -2,21 +2,14 @@ import CartModal from "components/cart/modal";
 import LogoSquare from "components/logo-square";
 import Link from "next/link";
 import { shareTech } from "lib/fonts";
+import { siteNavigation } from "lib/navigation";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
 import NavLink from "./nav-link";
 import Search, { SearchSkeleton } from "./search";
 
 export async function Navbar() {
-  const pages = [
-    { title: "Home", path: "/" },
-    { title: "Releases", path: "/releases" },
-    { title: "Shop", path: "/shop" },
-    { title: "Events", path: "/events" },
-    { title: "Interviews", path: "/interviews" },
-    { title: "About", path: "/about" },
-  ];
-  const menu = pages;
+  const menu = siteNavigation;
 
   return (
     <nav aria-label="Main navigation" className="site-header">

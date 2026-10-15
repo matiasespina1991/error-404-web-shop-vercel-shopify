@@ -1,3 +1,4 @@
+import { LinkArrow } from "components/icons/link-arrow";
 import ProductCardTitle from "components/product/card-title";
 import Link from "next/link";
 import Image from "next/image";
@@ -53,7 +54,7 @@ export default async function HomePage() {
         title="Releases"
         link={
           <Link href="/releases" className="hover:text-white">
-            All releases ↗
+            All releases <LinkArrow />
           </Link>
         }
       >
@@ -78,7 +79,7 @@ export default async function HomePage() {
             href="/events"
             className="text-xs text-neutral-300 hover:text-white"
           >
-            See all events ↗
+            See all events <LinkArrow />
           </Link>
         </div>
         <div
@@ -126,7 +127,7 @@ export default async function HomePage() {
         title="Shop"
         link={
           <Link href="/shop" className="hover:text-white">
-            To the shop ↗
+            To the shop <LinkArrow />
           </Link>
         }
       >
@@ -163,7 +164,7 @@ export default async function HomePage() {
         title="Interviews"
         link={
           <Link href="/interviews" className="hover:text-white">
-            All interviews ↗
+            All interviews <LinkArrow />
           </Link>
         }
       >
