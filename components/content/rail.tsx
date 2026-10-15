@@ -1,5 +1,5 @@
 "use client";
-import { BrandHeading } from "components/content/brand-heading";
+import { microgramma } from "lib/fonts";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 export function ContentRail({
@@ -48,9 +48,13 @@ export function ContentRail({
     <section aria-labelledby={`${id}-title`} className="content-section">
       <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <BrandHeading as="h2" id={`${id}-title`}>
+          <h2
+            id={`${id}-title`}
+            className="section-title carousel-title"
+            style={{ fontFamily: microgramma.style.fontFamily, fontWeight: 500 }}
+          >
             {title}
-          </BrandHeading>
+          </h2>
         </div>
         <div className="flex items-center gap-3 text-xs text-neutral-300">
           {link}

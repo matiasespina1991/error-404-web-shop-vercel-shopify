@@ -30,16 +30,16 @@ export function InterviewCard({
           {entry.category} / {entry.artist}
         </p>
         <h3
-          className={`mt-2 flex items-start justify-between gap-3 font-medium tracking-tight ${compact ? "text-sm uppercase" : "text-xl"}`}
+          className={`mt-2 flex items-end justify-between gap-3 font-medium tracking-tight uppercase ${compact ? "text-sm" : "text-xl"}`}
         >
           {entry.title}
           <ArrowUpRightIcon
             aria-hidden="true"
-            className="mt-1 size-5 shrink-0 text-neutral-400"
+            className="mb-[0.2em] size-5 shrink-0 text-neutral-400"
           />
         </h3>
         <p
-          className={`mt-2 text-sm leading-relaxed text-neutral-400 ${compact ? "line-clamp-2" : ""}`}
+          className={`text-sm leading-relaxed text-neutral-400 ${compact ? "mt-[0.3rem] line-clamp-2" : "mt-2"}`}
         >
           {entry.summary}
         </p>

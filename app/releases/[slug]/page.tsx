@@ -21,6 +21,9 @@ export default async function ReleasePage({ params }: Props) {
   const { slug } = await params;
   const { content: release } = await getContentEntry("releases", slug);
   if (!release || release.kind !== "releases") notFound();
+  const separator = release.title.indexOf(" - ");
+  const producer = release.title.slice(0, separator).trim();
+  const title = release.title.slice(separator + 3).trim();
   return (
     <>
       <article className="content-shell pb-16">
@@ -62,7 +65,14 @@ export default async function ReleasePage({ params }: Props) {
           </div>
           <div className="min-w-0">
             <BrandHeading as="h1" variant="page">
-              {release.title}
+              {separator > 0 && producer && title ? (
+                <>
+                  <span className="block">{producer}</span>
+                  <span className="block">{title}</span>
+                </>
+              ) : (
+                release.title
+              )}
             </BrandHeading>
             <p className="mt-5 max-w-2xl text-base leading-snug text-neutral-300">
               {release.summary}

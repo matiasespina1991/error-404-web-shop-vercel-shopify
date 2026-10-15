@@ -82,17 +82,23 @@ button {
 .section-title.newsletter-title {
   font-size: clamp(1.5rem, 2vw, 1.875rem);
 }
+.section-title.carousel-title {
+  font-size: clamp(1.375rem, 2vw, 1.875rem);
+}
 .content-title {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
-h1,
-h2 {
-  text-transform: uppercase;
+h1 {
+  text-transform: none;
 }
 h2,
 h2.content-eyebrow {
   font-family: var(--font-microgramma), Arial, sans-serif;
   letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+h2.section-title {
+  text-transform: uppercase;
 }
 h3 {
   font-family: var(--font-aptos), Arial, sans-serif;
@@ -215,6 +221,7 @@ h3 {
   max-width: 1600px;
   margin-inline: auto;
   padding: 1rem;
+  padding-bottom: 1.5rem;
   background: #000;
   color: #fff;
 }
@@ -347,7 +354,7 @@ h3 {
     flex: none;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 1.9rem;
+    gap: 1.7rem;
   }
 }
 
