@@ -28,7 +28,10 @@ export default async function EventsPage({
             Events
           </BrandHeading>
         </header>
-        <nav aria-label="Event timeline" className="mb-4 flex gap-7 text-sm">
+        <nav
+          aria-label="Event timeline"
+          className="font-condensed mb-4 flex gap-7 text-sm"
+        >
           {["upcoming", "past"].map((value) => (
             <Link
               key={value}

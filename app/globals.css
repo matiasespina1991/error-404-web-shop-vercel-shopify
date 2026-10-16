@@ -10,12 +10,35 @@
   --font-sans: Helvetica, Arial, sans-serif;
 }
 
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: "Error404 Helvetica Condensed Light";
+  src: url("/fonts/helvetica-condensed-light-v2.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 .header-menu-type {
-  font-family: var(--font-aptos), Arial, sans-serif;
-  letter-spacing: 0.03em;
-  font-weight: 400;
-  font-size: 0.95rem;
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: 200;
+  font-size: 0.85rem;
   text-transform: none;
+}
+
+.header-menu-type.header-nav-type,
+.footer-copyright {
+  font-family:
+    "Error404 Helvetica Condensed Light", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+.header-menu-type.header-nav-type {
+  font-size: 1.01rem;
 }
 
 @layer base {
@@ -65,19 +88,22 @@ button {
   text-transform: uppercase;
   color: #aaa;
 }
+h2.content-eyebrow {
+  font-size: 0.9rem;
+}
 .section-title,
 .content-title {
   font-family: var(--font-microgramma), Arial, sans-serif;
   font-weight: 500;
   font-synthesis: none;
-  letter-spacing: 0.03em;
-  line-height: 1.35;
+  letter-spacing: 0.05em;
+  line-height: 1.6rem;
   text-wrap: balance;
   overflow-wrap: anywhere;
 }
 .section-title {
   font-size: clamp(1.25rem, 1.75vw, 1.625rem);
-  text-transform: uppercase;
+  text-transform: none;
 }
 .section-title.newsletter-title {
   font-size: clamp(1.5rem, 2vw, 1.875rem);
@@ -94,11 +120,11 @@ h1 {
 h2,
 h2.content-eyebrow {
   font-family: var(--font-microgramma), Arial, sans-serif;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-transform: none;
 }
 h2.section-title {
-  text-transform: uppercase;
+  text-transform: none;
 }
 h3 {
   font-family: var(--font-aptos), Arial, sans-serif;
@@ -236,6 +262,7 @@ h3 {
   justify-self: start;
 }
 .site-header-logo {
+  margin-bottom: 0.2rem;
   grid-column: 2;
   grid-row: 1;
 }
@@ -432,4 +459,75 @@ main > .content-section:first-of-type {
   height: auto;
   border-radius: 0.5rem;
   margin-block: 1.25rem;
+}
+
+/* Keep Microgramma line spacing consistent, including rich text headings. */
+h2,
+.rich-content h2,
+.section-title,
+.content-title {
+  line-height: 1.6rem;
+}
+
+/* One scale for condensed short copy; previews keep their original size. */
+.font-condensed {
+  --condensed-scale: 1.12;
+  font-family: var(--font-helvetica-condensed), Helvetica, Arial, sans-serif;
+  font-size: calc(1rem * var(--condensed-scale));
+}
+
+:is(.font-condensed, .font-condensed *).text-xs:not(h1, h2, h3) {
+  font-size: calc(var(--text-xs) * var(--condensed-scale));
+}
+:is(.font-condensed, .font-condensed *).text-sm:not(h1, h2, h3) {
+  font-size: calc(var(--text-sm) * var(--condensed-scale));
+}
+:is(.font-condensed, .font-condensed *).text-base:not(h1, h2, h3) {
+  font-size: calc(var(--text-base) * var(--condensed-scale));
+}
+
+.carousel-preview {
+  --condensed-scale: 1;
+}
+
+.section-title.carousel-title {
+  text-transform: uppercase;
+}
+
+.event-list-title {
+  text-transform: uppercase;
+}
+
+@media (hover: hover) {
+  .nav-menu-link:hover {
+    color: #f3f3f3;
+  }
+}
+
+.product-card-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: first baseline;
+  gap: 0;
+}
+.product-card-copy > :is(h3, h4, p) {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.375;
+}
+.product-card-copy > p {
+  text-align: right;
+  white-space: nowrap;
+}
+.product-card-copy > :is(h3, h4) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.section-link,
+.release-summary {
+  font-family: var(--font-aptos), Arial, sans-serif;
+}
+.section-link {
+  letter-spacing: -0.01em;
 }

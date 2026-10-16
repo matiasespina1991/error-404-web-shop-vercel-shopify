@@ -1,9 +1,9 @@
 import { BrandHeading } from "components/content/brand-heading";
-import Link from "next/link";
-import Footer from "components/layout/footer";
 import { InterviewCard } from "components/content/cards";
-import { getContentPage } from "lib/content/feed";
+import Footer from "components/layout/footer";
 import type { InterviewContent } from "lib/content/entries";
+import { getContentPage } from "lib/content/feed";
+import Link from "next/link";
 export async function generateMetadata() {
   const page = await getContentPage("interviews");
   return {
@@ -21,12 +21,15 @@ export default async function InterviewsPage({
   const page = await getContentPage("interviews", "upcoming", cursor);
   return (
     <>
-      <div className="content-shell pb-20">
-        <header className="mb-12">
+      <div className="content-shell pb-20 pt-[2.3rem]">
+        <header className="mb-[2.3rem]">
           <BrandHeading as="h1" variant="page">
             Interviews
           </BrandHeading>
-          <p className="mt-5 text-neutral-400">
+          <p
+            className="font-condensed text-neutral-400"
+            style={{ fontSize: "1rem", marginTop: "0.8rem" }}
+          >
             A closer look at the ideas, records and stories that connect us.
           </p>
         </header>

@@ -1,9 +1,9 @@
-import { ContentBreadcrumb } from "components/content/breadcrumb";
 import { BrandHeading } from "components/content/brand-heading";
-import { notFound } from "next/navigation";
-import Footer from "components/layout/footer";
+import { ContentBreadcrumb } from "components/content/breadcrumb";
 import { Paragraphs } from "components/content/cards";
+import Footer from "components/layout/footer";
 import { contentImageUrl, getContentEntry } from "lib/content/feed";
+import { notFound } from "next/navigation";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
@@ -26,12 +26,7 @@ export default async function InterviewPage({ params }: Props) {
           href="/interviews"
           title={entry.title}
         />
-        <BrandHeading
-          as="h1"
-          variant="page"
-          className="mt-4"
-          style={{ textTransform: "uppercase" }}
-        >
+        <BrandHeading as="h1" variant="page" className="mt-4">
           {entry.title}
         </BrandHeading>
         <div className="mt-6 flex flex-col lg:flow-root">

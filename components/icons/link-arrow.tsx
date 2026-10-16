@@ -4,7 +4,7 @@ export function LinkArrow() {
   return (
     <ArrowUpRightIcon
       aria-hidden="true"
-      className="ml-1 inline-block size-4 shrink-0 align-text-bottom"
+      className="ml-1 inline-block pb-[0.05rem] size-4 shrink-0 align-text-bottom"
     />
   );
 }

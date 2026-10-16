@@ -4,21 +4,28 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 export function ContentRail({
   title,
+  uppercaseTitle = true,
   children,
   link,
 }: {
   title: string;
+  uppercaseTitle?: boolean;
   children: ReactNode;
   link: ReactNode;
 }) {
   const id = useId(),
     rail = useRef<HTMLUListElement>(null);
-  const [edges, setEdges] = useState({ start: true, end: true });
+  const [edges, setEdges] = useState({
+    start: true,
+    end: true,
+    scrollable: false,
+  });
   useEffect(() => {
     const element = rail.current;
     if (!element) return;
     const update = () =>
       setEdges({
+        scrollable: element.scrollWidth > element.clientWidth + 2,
         start: element.scrollLeft < 2,
         end:
           element.scrollLeft + element.clientWidth >= element.scrollWidth - 2,
@@ -45,19 +52,26 @@ export function ContentRail({
     });
   }
   return (
-    <section aria-labelledby={`${id}-title`} className="content-section">
+    <section
+      aria-labelledby={`${id}-title`}
+      className="content-section font-condensed"
+    >
       <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
-        <div>
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
           <h2
             id={`${id}-title`}
             className="section-title carousel-title"
-            style={{ fontFamily: microgramma.style.fontFamily, fontWeight: 500 }}
+            style={{
+              fontFamily: microgramma.style.fontFamily,
+              fontWeight: 500,
+              textTransform: uppercaseTitle ? "uppercase" : "none",
+            }}
           >
             {title}
           </h2>
+          <div className="section-link text-xs text-neutral-300">{link}</div>
         </div>
-        <div className="flex items-center gap-3 text-xs text-neutral-300">
-          {link}
+        {edges.scrollable && (
           <div className="flex gap-1">
             <button
               className="rail-arrow"
@@ -78,7 +92,7 @@ export function ContentRail({
               <ArrowRightIcon className="size-5" />
             </button>
           </div>
-        </div>
+        )}
       </div>
       <div className="relative">
         <ul
@@ -90,10 +104,12 @@ export function ContentRail({
         >
           {children}
         </ul>
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-black to-transparent"
-        />
+        {edges.scrollable && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-black to-transparent"
+          />
+        )}
       </div>
     </section>
   );

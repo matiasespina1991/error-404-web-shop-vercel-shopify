@@ -16,7 +16,7 @@ export function Newsletter() {
 
   return (
     <section className="content-section" aria-labelledby={`${id}-title`}>
-      <div className="flex flex-col items-center gap-5 border-t border-white/15 py-6 text-center">
+      <div className="flex flex-col items-center gap-5 border-t border-white/15 pt-12 pb-10 text-center md:pt-16 md:pb-12">
         <div>
           <BrandHeading as="h2" id={`${id}-title`} className="newsletter-title">
             Join our newsletter
@@ -40,7 +40,7 @@ export function Newsletter() {
               required
               maxLength={254}
               aria-describedby={`${id}-notice`}
-              className="h-10 w-full rounded-md border border-white/25 bg-transparent px-3 py-2 text-sm text-white placeholder:text-neutral-400"
+              className="h-10 w-full rounded-md border border-white/25 bg-transparent px-3 py-2 text-center text-sm text-white placeholder:text-neutral-400"
             />
             <button
               type="submit"

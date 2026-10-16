@@ -1,7 +1,14 @@
 import { CartProvider } from "components/cart/cart-context";
 import { Navbar } from "components/layout/navbar";
 import { getCart } from "lib/shopify";
-import { aptos, microgramma, shareTech } from "lib/fonts";
+import {
+  alteDin,
+  aptos,
+  dax,
+  helveticaCondensed,
+  microgramma,
+  shareTech,
+} from "lib/fonts";
 import { baseUrl } from "lib/utils";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
@@ -38,9 +45,9 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${microgramma.variable} ${aptos.variable} ${shareTech.variable}`}
+      className={`${microgramma.variable} ${aptos.variable} ${shareTech.variable} ${dax.variable} ${helveticaCondensed.variable} ${alteDin.variable}`}
     >
-      <body className="bg-black text-white selection:bg-[#8d75d5] selection:text-white">
+      <body className="bg-black text-white selection:bg-[#7594d52e] selection:text-white">
         <CartProvider cartPromise={cart}>
           <Navbar />
           <main>

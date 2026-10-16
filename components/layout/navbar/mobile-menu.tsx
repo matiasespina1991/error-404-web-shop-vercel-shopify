@@ -8,7 +8,6 @@ import { Fragment, Suspense, useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LogoSquare from "components/logo-square";
 import { Menu } from "lib/shopify/types";
-import { aptos } from "lib/fonts";
 import Search, { SearchSkeleton } from "./search";
 
 export default function MobileMenu({ menu }: { menu: Menu[] }) {
@@ -79,17 +78,14 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   </Suspense>
                 </div>
                 {menu.length ? (
-                  <ul
-                    className="header-menu-type flex w-full flex-col"
-                    style={{ fontFamily: aptos.style.fontFamily }}
-                  >
+                  <ul className="header-menu-type header-nav-type flex w-full flex-col">
                     {menu.map((item: Menu) => (
                       <li
                         className="py-2 text-black transition-colors hover:text-neutral-500 dark:text-white"
                         key={item.title}
                       >
                         <NavLink
-                          style={{ textDecoration: "none" }}
+                          showActiveUnderline={false}
                           href={item.path}
                           className="flex min-h-11 items-center"
                           prefetch={true}

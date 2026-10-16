@@ -1,12 +1,11 @@
-import { ContentBreadcrumb } from "components/content/breadcrumb";
-import { LinkArrow } from "components/icons/link-arrow";
 import { BrandHeading } from "components/content/brand-heading";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import Footer from "components/layout/footer";
+import { ContentBreadcrumb } from "components/content/breadcrumb";
 import { Paragraphs } from "components/content/cards";
 import { eventDate, ticketLabels } from "components/content/event-list";
+import { LinkArrow } from "components/icons/link-arrow";
+import Footer from "components/layout/footer";
 import { contentImageUrl, getContentEntry } from "lib/content/feed";
+import { notFound } from "next/navigation";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
@@ -38,15 +37,10 @@ export default async function EventPage({ params }: Props) {
           title={event.title}
         />
         <header className="mt-4 mb-4">
-          <BrandHeading
-            as="h1"
-            variant="page"
-            className="max-w-5xl"
-            style={{ textTransform: "uppercase" }}
-          >
+          <BrandHeading as="h1" variant="page" className="max-w-5xl">
             {event.title}
           </BrandHeading>
-          <p className="mt-2 text-neutral-400">
+          <p className="mt-2 text-[0.9rem] text-neutral-400">
             {eventDate(event)} · {event.venue}
           </p>
         </header>

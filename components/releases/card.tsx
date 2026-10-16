@@ -16,7 +16,7 @@ export function ReleaseCard({
   return (
     <Link
       href={`/releases/${release.slug}`}
-      className="group flex h-full flex-col"
+      className="font-condensed group flex h-full flex-col"
     >
       <div className="aspect-square overflow-hidden rounded-md bg-neutral-900">
         {release.cover && (
@@ -31,7 +31,7 @@ export function ReleaseCard({
         )}
       </div>
       <div className="pt-3">
-        <h3 className="line-clamp-3 text-sm font-medium">
+        <h3 className="uppercase line-clamp-3 text-sm font-medium">
           {splitTitle && separator > 0 && artist && title ? (
             <>
               <span className="block text-left">{artist}</span>
@@ -45,7 +45,7 @@ export function ReleaseCard({
           {releaseFormatLabel(release.format)}
           {release.genres.length ? ` · ${release.genres.join(" / ")}` : ""}
         </p>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-neutral-400">
+        <p className="release-summary mt-2 line-clamp-2 carousel-preview text-sm leading-relaxed text-neutral-400">
           {release.summary}
         </p>
       </div>

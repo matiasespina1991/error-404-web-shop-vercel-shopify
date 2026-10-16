@@ -110,16 +110,16 @@ export function RelatedMobileCarousel({ products }: { products: Product[] }) {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex grow flex-col items-start gap-2 bg-[#171717] p-3 text-xs leading-snug">
-                  <h4 className="line-clamp-3 font-medium text-neutral-200">
-                    <ProductCardTitle product={product} />
+                <div className="product-card-copy grow bg-[#171717] p-3">
+                  <h4 className="min-w-0 flex-1 line-clamp-3 font-medium text-neutral-200">
+                    <ProductCardTitle product={product} splitTitle={false} />
                   </h4>
                   <Price
                     amount={product.priceRange.maxVariantPrice.amount}
                     currencyCode={
                       product.priceRange.maxVariantPrice.currencyCode
                     }
-                    className="font-medium tabular-nums text-neutral-300"
+                    className="shrink-0 font-medium tabular-nums text-neutral-300"
                   />
                 </div>
               </Link>

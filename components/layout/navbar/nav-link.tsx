@@ -7,8 +7,12 @@ import type { ComponentProps } from "react";
 export default function NavLink({
   href,
   className = "",
+  showActiveUnderline = true,
   ...props
-}: Omit<ComponentProps<typeof Link>, "href"> & { href: string }) {
+}: Omit<ComponentProps<typeof Link>, "href"> & {
+  href: string;
+  showActiveUnderline?: boolean;
+}) {
   const pathname = usePathname();
   const active =
     pathname === href ||
@@ -23,7 +27,7 @@ export default function NavLink({
       {...props}
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`${className} decoration-[1px] underline-offset-4 ${active ? "underline" : "no-underline"}`}
+      className={`nav-menu-link ${className} decoration-[1px] underline-offset-4 ${active && showActiveUnderline ? "underline" : "no-underline"}`}
     />
   );
 }

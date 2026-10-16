@@ -44,8 +44,8 @@ export function ReleaseTrackPlayer({ tracks }: { tracks: ReleaseTrack[] }) {
   return (
     <ol ref={list} className="space-y-1">
       {tracks.map((track) => (
-        <li key={track.position} className="flex items-start gap-4">
-          <span className="w-9 shrink-0 pt-0.5 text-xs text-neutral-400">
+        <li key={track.position} className="flex items-start gap-1">
+          <span className="w-5 shrink-0 pt-0.5 text-xs text-neutral-400">
             {track.position}
           </span>
           <div className="min-w-0 flex-1">

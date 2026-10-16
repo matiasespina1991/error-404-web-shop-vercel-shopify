@@ -1,4 +1,5 @@
 import { ContentBreadcrumb } from "components/content/breadcrumb";
+import { DiscIcon } from "components/icons/disc";
 import { LinkArrow } from "components/icons/link-arrow";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -35,7 +36,7 @@ export default async function ReleasePage({ params }: Props) {
           title={release.title}
         />
         <div className="mt-4 grid items-start gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
-          <div className="w-full max-w-md space-y-4">
+          <div className="w-full max-w-md space-y-4 pt-[0.7rem]">
             {release.cover && (
               <div className="overflow-hidden rounded-md bg-neutral-900">
                 <img
@@ -65,11 +66,7 @@ export default async function ReleasePage({ params }: Props) {
             )}
           </div>
           <div className="min-w-0">
-            <BrandHeading
-              as="h1"
-              variant="page"
-              style={{ textTransform: "uppercase" }}
-            >
+            <BrandHeading as="h1" variant="page">
               {separator > 0 && producer && title ? (
                 <>
                   <span className="block">{producer}</span>
@@ -79,13 +76,18 @@ export default async function ReleasePage({ params }: Props) {
                 release.title
               )}
             </BrandHeading>
-            <p className="mt-5 max-w-2xl text-base leading-snug text-neutral-300">
+            <p className="release-summary mt-5 max-w-2xl text-base leading-snug text-neutral-300">
               {release.summary}
             </p>
             <dl className="mt-5 space-y-2 text-sm">
-              <div className="flex gap-3">
-                <dt className="text-neutral-400">Format</dt>
-                <dd>{releaseFormatLabel(release.format)}</dd>
+              <div className="flex items-center gap-2">
+                <dt>
+                  <span className="sr-only">Format</span>
+                  <DiscIcon className="size-4 text-neutral-400" />
+                </dt>
+                <dd className="text-neutral-400">
+                  {releaseFormatLabel(release.format)}
+                </dd>
               </div>
               {release.genres.length > 0 && (
                 <div className="flex gap-3">
@@ -105,7 +107,7 @@ export default async function ReleasePage({ params }: Props) {
               </a>
             )}
             <section className="mt-8" aria-labelledby="release-tracklist">
-              <h2 id="release-tracklist" className="mb-5 text-sm">
+              <h2 id="release-tracklist" className="mb-2 text-sm">
                 Tracklist
               </h2>
               <ReleaseTrackPlayer tracks={release.tracks} />
@@ -117,7 +119,7 @@ export default async function ReleasePage({ params }: Props) {
               <RichText
                 body={release.body}
                 format={release.bodyFormat}
-                className="release-body max-w-2xl text-sm leading-[1.5] text-neutral-300"
+                className="release-body max-w-2xl text-base leading-[1.5] text-neutral-300"
               />
             </section>
           </div>

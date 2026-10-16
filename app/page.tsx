@@ -1,18 +1,18 @@
-import { LinkArrow } from "components/icons/link-arrow";
-import ProductCardTitle from "components/product/card-title";
-import Link from "next/link";
-import Image from "next/image";
-import Footer from "components/layout/footer";
-import Price from "components/price";
-import { ContentRail } from "components/content/rail";
+import { BrandHeading } from "components/content/brand-heading";
 import { InterviewCard } from "components/content/cards";
 import { EventList, eventDate } from "components/content/event-list";
-import { BrandHeading } from "components/content/brand-heading";
-import { getProducts } from "lib/shopify";
-import { contentImageUrl, getContentPage } from "lib/content/feed";
+import { ContentRail } from "components/content/rail";
 import { Newsletter } from "components/home/newsletter";
-import type { EventContent, InterviewContent } from "lib/content/entries";
+import { LinkArrow } from "components/icons/link-arrow";
+import Footer from "components/layout/footer";
+import Price from "components/price";
+import ProductCardTitle from "components/product/card-title";
 import { ReleaseCard } from "components/releases/card";
+import type { EventContent, InterviewContent } from "lib/content/entries";
+import { contentImageUrl, getContentPage } from "lib/content/feed";
+import { getProducts } from "lib/shopify";
+import Image from "next/image";
+import Link from "next/link";
 export async function generateMetadata() {
   const [events, interviews] = await Promise.all([
     getContentPage("events"),
@@ -52,9 +52,10 @@ export default async function HomePage() {
       <h1 className="sr-only">Error404 — Records, interviews and events</h1>
       <ContentRail
         title="Releases"
+        uppercaseTitle={false}
         link={
           <Link href="/releases" className="hover:text-white">
-            All releases <LinkArrow />
+            See all releases <LinkArrow />
           </Link>
         }
       >
@@ -73,11 +74,11 @@ export default async function HomePage() {
         )}
       </ContentRail>
       <section className="content-section" aria-labelledby="home-events-title">
-        <div className="mb-5 flex flex-col items-start gap-1">
+        <div className="mb-5 flex flex-wrap items-baseline gap-x-4 gap-y-2">
           <BrandHeading id="home-events-title">Next Events</BrandHeading>
           <Link
             href="/events"
-            className="text-xs text-neutral-300 hover:text-white"
+            className="section-link text-xs text-neutral-300 hover:text-white"
           >
             See all events <LinkArrow />
           </Link>
@@ -99,13 +100,15 @@ export default async function HomePage() {
                   className="max-h-[420px] w-full object-contain object-left"
                 />
               </Link>
-              <figcaption className="mt-3 text-left text-sm">
-                <Link
-                  href={`/events/${nextEvent.slug}`}
-                  className="hover:underline"
-                >
-                  {nextEvent.title}
-                </Link>
+              <figcaption className="font-condensed mt-3 text-center text-sm">
+                <h2 className="event-list-title text-sm font-medium tracking-tight md:text-base">
+                  <Link
+                    href={`/events/${nextEvent.slug}`}
+                    className="hover:underline"
+                  >
+                    {nextEvent.title.toUpperCase()}
+                  </Link>
+                </h2>
                 <p className="mt-1 text-xs text-neutral-400">
                   <time dateTime={nextEvent.startsAt}>
                     {eventDate(nextEvent)}
@@ -125,6 +128,7 @@ export default async function HomePage() {
       </section>
       <ContentRail
         title="Shop"
+        uppercaseTitle={false}
         link={
           <Link href="/shop" className="hover:text-white">
             To the shop <LinkArrow />
@@ -146,14 +150,14 @@ export default async function HomePage() {
                   className="object-cover transition-opacity group-hover:opacity-80"
                 />
               </div>
-              <div className="flex grow flex-col gap-1.5 pt-3">
-                <h3 className="line-clamp-3 text-sm font-medium">
+              <div className="product-card-copy grow pt-3">
+                <h3 className="uppercase min-w-0 flex-1 line-clamp-3 font-medium">
                   <ProductCardTitle product={product} />
                 </h3>
                 <Price
                   amount={product.priceRange.maxVariantPrice.amount}
                   currencyCode={product.priceRange.maxVariantPrice.currencyCode}
-                  className="text-sm font-medium text-neutral-300"
+                  className="shrink-0 font-medium text-neutral-300"
                 />
               </div>
             </Link>
@@ -162,9 +166,10 @@ export default async function HomePage() {
       </ContentRail>
       <ContentRail
         title="Interviews"
+        uppercaseTitle={false}
         link={
           <Link href="/interviews" className="hover:text-white">
-            All interviews <LinkArrow />
+            See all interviews <LinkArrow />
           </Link>
         }
       >

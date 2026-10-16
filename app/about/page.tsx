@@ -1,8 +1,8 @@
-import { RichText } from "components/content/rich-text";
 import { BrandHeading } from "components/content/brand-heading";
-import type { Metadata } from "next";
+import { RichText } from "components/content/rich-text";
 import Footer from "components/layout/footer";
 import { aboutImageUrl, getPublishedAbout } from "lib/content/about";
+import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPublishedAbout();
@@ -19,7 +19,7 @@ export default async function AboutPage() {
   const content = await getPublishedAbout();
   return (
     <>
-      <article className="content-shell pb-20">
+      <article className="content-shell pb-20 pt-[1.3rem]">
         <BrandHeading as="h1" variant="page" className="mb-6">
           {content?.title || "About"}
         </BrandHeading>
@@ -38,7 +38,7 @@ export default async function AboutPage() {
             <RichText
               body={content.body}
               format={content.bodyFormat}
-              className="max-w-2xl text-base font-light leading-8 text-neutral-300"
+              className="max-w-2xl text-base font-normal leading-[1.5] text-neutral-300"
             />
           </>
         ) : (

@@ -19,7 +19,6 @@ export function BrandHeading({
       style={{
         ...style,
         fontFamily: font.style.fontFamily,
-        letterSpacing: "0.03em",
       }}
     />
   );

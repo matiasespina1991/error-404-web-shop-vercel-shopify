@@ -1,3 +1,5 @@
+import { eurostile } from "lib/fonts";
+
 const Price = ({
   amount,
   className,
@@ -7,7 +9,10 @@ const Price = ({
   className?: string;
   currencyCode?: string;
 } & React.ComponentProps<"p">) => (
-  <p suppressHydrationWarning className={className}>
+  <p
+    suppressHydrationWarning
+    className={`${eurostile.className} ${className || ""}`}
+  >
     {new Intl.NumberFormat(undefined, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,

@@ -12,7 +12,10 @@ export function InterviewCard({
   compact?: boolean;
 }) {
   return (
-    <Link href={`/interviews/${entry.slug}`} className="group block h-full">
+    <Link
+      href={`/interviews/${entry.slug}`}
+      className="font-condensed group block h-full"
+    >
       <div className="aspect-[4/3] overflow-hidden rounded-md bg-neutral-900">
         {entry.cover && (
           <img
@@ -35,11 +38,11 @@ export function InterviewCard({
           {entry.title}
           <ArrowUpRightIcon
             aria-hidden="true"
-            className="mb-[0.2em] size-5 shrink-0 text-neutral-400"
+            className="mb-[0.2em] size-4 shrink-0 text-neutral-300"
           />
         </h3>
         <p
-          className={`text-sm leading-relaxed text-neutral-400 ${compact ? "mt-[0.3rem] line-clamp-2" : "mt-2"}`}
+          className={`carousel-preview text-sm leading-relaxed text-neutral-400 ${compact ? "mt-[0.3rem] line-clamp-2" : "mt-2"}`}
         >
           {entry.summary}
         </p>

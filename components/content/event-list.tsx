@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { showUpcomingEventYear } from "lib/content/event-year";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import type { EventContent } from "lib/content/entries";
 import { contentImageUrl } from "lib/content/feed";
@@ -28,6 +29,7 @@ export function EventList({
   events: EventContent[];
   compact?: boolean;
 }) {
+  const now = new Date();
   if (!events.length)
     return (
       <p className="py-12 text-neutral-400">
@@ -35,21 +37,18 @@ export function EventList({
       </p>
     );
   return (
-    <ul className="divide-y divide-white/15 border-y border-white/15">
+    <ul className="font-condensed divide-y divide-white/15 border-y border-white/15">
       {events.map((event) => (
         <li key={event.slug}>
           <Link
             href={`/events/${event.slug}`}
             className={`group grid items-center transition-colors hover:bg-white/[0.03] ${
               compact
-                ? "grid-cols-[48px_minmax(0,1fr)_auto] gap-3 py-3 md:grid-cols-[64px_72px_minmax(0,1fr)_minmax(120px,0.5fr)_auto] md:gap-4 md:py-4"
-                : "grid-cols-[64px_minmax(0,1fr)_auto] gap-4 py-3 md:grid-cols-[90px_128px_minmax(0,1fr)_minmax(120px,0.5fr)_auto] md:gap-7 md:py-4"
+                ? "grid-cols-[48px_minmax(0,1fr)_auto] gap-3 py-3 md:grid-cols-[64px_72px_minmax(0,1fr)_minmax(120px,0.5fr)_7rem] md:gap-4 md:py-4"
+                : "grid-cols-[64px_minmax(0,1fr)_auto] gap-4 py-3 md:grid-cols-[90px_128px_minmax(0,1fr)_minmax(120px,0.5fr)_7rem] md:gap-7 md:py-4"
             }`}
           >
-            <time
-              dateTime={event.startsAt}
-              className="flex flex-col gap-1"
-            >
+            <time dateTime={event.startsAt} className="flex flex-col gap-1">
               <span
                 className={`font-light tracking-tight ${compact ? "text-base leading-none md:text-lg" : "text-2xl md:text-3xl"}`}
               >
@@ -57,16 +56,19 @@ export function EventList({
                   ? eventDate(event, { day: "2-digit", month: "2-digit" })
                   : eventDate(event, { day: "2-digit" })}
               </span>
-              <span
-                className={`uppercase tracking-widest text-neutral-400 ${compact ? "text-[11px] leading-tight" : "text-xs"}`}
-              >
-                {eventDate(
-                  event,
-                  compact
-                    ? { year: "numeric" }
-                    : { month: "short", year: "numeric" },
-                )}
-              </span>
+              {(!compact ||
+                showUpcomingEventYear(event.startsAt, event.timeZone, now)) && (
+                <span
+                  className={`uppercase tracking-widest text-neutral-400 ${compact ? "text-[11px] leading-tight" : "text-xs"}`}
+                >
+                  {eventDate(
+                    event,
+                    compact
+                      ? { year: "numeric" }
+                      : { month: "short", year: "numeric" },
+                  )}
+                </span>
+              )}
             </time>
             <div className="hidden aspect-square overflow-hidden md:block">
               {event.cover && (
@@ -91,9 +93,9 @@ export function EventList({
                 {event.eventType}
               </p>
               <h2
-                className={`font-medium tracking-tight ${compact ? "mt-1 text-sm md:text-base" : "mt-2 text-[1.0625rem] md:text-[1.375rem]"}`}
+                className={`event-list-title font-medium tracking-tight ${compact ? "mt-1 text-sm md:text-base" : "mt-2 text-[1.0625rem] md:text-[1.375rem]"}`}
               >
-                {event.title}
+                {event.title.toUpperCase()}
               </h2>
               <p
                 className={
@@ -119,13 +121,13 @@ export function EventList({
                 {event.city}, {event.country}
               </p>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-end gap-4">
               <span className="hidden text-xs text-neutral-300 lg:block">
                 {ticketLabels[event.ticketStatus]}
               </span>
               <ArrowUpRightIcon
                 aria-hidden="true"
-                className="size-5 text-neutral-400 group-hover:text-white"
+                className="size-5 shrink-0 text-neutral-400 group-hover:text-white"
               />
             </div>
           </Link>

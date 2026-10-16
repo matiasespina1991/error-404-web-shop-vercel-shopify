@@ -1,4 +1,5 @@
 import ProductCardTitle from "components/product/card-title";
+import { ContentBreadcrumb } from "components/content/breadcrumb";
 import { GridTileImage } from "components/grid/tile";
 import Footer from "components/layout/footer";
 import { Gallery } from "components/product/gallery";
@@ -82,8 +83,15 @@ export default async function ProductPage(props: {
           __html: JSON.stringify(productJsonLd),
         }}
       />
-      <div className="mx-auto max-w-(--breakpoint-2xl) px-4">
-        <div className="flex flex-col gap-4 bg-white pb-6 px-3 sm:px-6 sm:pb-6 md:gap-8 md:px-8 md:pb-8 lg:flex-row lg:gap-12 dark:bg-black">
+      <div className="mx-auto w-full max-w-[950px] px-4 md:px-8">
+        <div className="mb-4">
+          <ContentBreadcrumb
+            section="Shop"
+            href="/shop"
+            title={product.title}
+          />
+        </div>
+        <div className="flex flex-col gap-4 bg-white pb-6 md:gap-8 md:pb-8 lg:flex-row lg:gap-12 dark:bg-black">
           <div className="w-full min-w-0 basis-full lg:basis-1/2">
             <Suspense
               fallback={
@@ -137,7 +145,9 @@ async function RelatedProducts({ id }: { id: string }) {
               <GridTileImage
                 alt={product.title}
                 label={{
-                  title: <ProductCardTitle product={product} />,
+                  title: (
+                    <ProductCardTitle product={product} splitTitle={false} />
+                  ),
                   amount: product.priceRange.maxVariantPrice.amount,
                   currencyCode: product.priceRange.maxVariantPrice.currencyCode,
                 }}
