@@ -373,7 +373,7 @@ main > .content-section:first-of-type {
   overflow-wrap: anywhere;
 }
 .rich-content > * + * {
-  margin-top: 1.25rem;
+  margin-top: 0.625rem;
 }
 .rich-content.release-body > * + * {
   margin-top: 0.625rem;

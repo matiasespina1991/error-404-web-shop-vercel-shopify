@@ -23,12 +23,12 @@ export default async function EventsPage({
   return (
     <>
       <div className="content-shell pb-16">
-        <header className="mb-4">
+        <header className="mb-2">
           <BrandHeading as="h1" variant="page">
             Events
           </BrandHeading>
         </header>
-        <nav aria-label="Event timeline" className="mb-8 flex gap-7 text-sm">
+        <nav aria-label="Event timeline" className="mb-4 flex gap-7 text-sm">
           {["upcoming", "past"].map((value) => (
             <Link
               key={value}
@@ -36,8 +36,8 @@ export default async function EventsPage({
               aria-current={timeline === value ? "page" : undefined}
               className={
                 timeline === value
-                  ? "border-b border-white pb-3"
-                  : "pb-3 text-neutral-400 hover:text-white"
+                  ? "border-b border-white pb-2"
+                  : "pb-2 text-neutral-400 hover:text-white"
               }
             >
               {value === "past" ? "Archive" : "Upcoming"}

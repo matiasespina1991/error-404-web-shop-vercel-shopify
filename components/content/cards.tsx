@@ -58,7 +58,7 @@ export function Paragraphs({
     <RichText
       body={text}
       format={format}
-      className="text-base leading-8 font-normal text-neutral-300"
+      className="text-base leading-[1.5] font-normal text-neutral-300"
     />
   );
 }

@@ -1,3 +1,4 @@
+import { ContentBreadcrumb } from "components/content/breadcrumb";
 import { LinkArrow } from "components/icons/link-arrow";
 import { BrandHeading } from "components/content/brand-heading";
 import Link from "next/link";
@@ -31,24 +32,28 @@ export default async function EventPage({ params }: Props) {
   return (
     <>
       <article className="content-shell pb-20">
-        <Link
+        <ContentBreadcrumb
+          section="Events"
           href="/events"
-          className="text-sm text-neutral-400 hover:text-white"
-        >
-          ← All events
-        </Link>
-        <header className="mt-10 mb-8">
-          <BrandHeading as="h1" variant="page" className="max-w-5xl">
+          title={event.title}
+        />
+        <header className="mt-4 mb-4">
+          <BrandHeading
+            as="h1"
+            variant="page"
+            className="max-w-5xl"
+            style={{ textTransform: "uppercase" }}
+          >
             {event.title}
           </BrandHeading>
-          <p className="mt-4 text-neutral-400">
+          <p className="mt-2 text-neutral-400">
             {eventDate(event)} · {event.venue}
           </p>
         </header>
         <div className="grid items-start gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-16">
           <div>
             {event.cover && (
-              <div className="overflow-hidden rounded-md bg-neutral-900">
+              <div className="overflow-hidden bg-neutral-900">
                 <img
                   src={contentImageUrl(event.cover.id)}
                   alt={event.cover.alt}
@@ -93,7 +98,7 @@ export default async function EventPage({ params }: Props) {
             </div>
           </div>
           <div>
-            <p className="text-xl leading-relaxed text-neutral-200">
+            <p className="text-sm leading-relaxed text-neutral-200">
               {event.summary}
             </p>
             <section className="my-10">
@@ -191,7 +196,7 @@ export default async function EventPage({ params }: Props) {
                   width={1000}
                   height={700}
                   loading="lazy"
-                  className="aspect-[3/2] w-full rounded-md object-cover"
+                  className="aspect-[3/2] w-full object-cover"
                 />
               ))}
             </div>

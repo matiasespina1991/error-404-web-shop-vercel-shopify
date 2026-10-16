@@ -42,13 +42,13 @@ export function EventList({
             href={`/events/${event.slug}`}
             className={`group grid items-center transition-colors hover:bg-white/[0.03] ${
               compact
-                ? "grid-cols-[48px_minmax(0,1fr)_auto] gap-3 py-3 md:grid-cols-[64px_50px_minmax(0,1fr)_minmax(120px,0.5fr)_auto] md:gap-4 md:py-4"
-                : "grid-cols-[64px_minmax(0,1fr)_auto] gap-4 py-6 md:grid-cols-[90px_100px_minmax(0,1fr)_minmax(120px,0.5fr)_auto] md:gap-7 md:py-8"
+                ? "grid-cols-[48px_minmax(0,1fr)_auto] gap-3 py-3 md:grid-cols-[64px_72px_minmax(0,1fr)_minmax(120px,0.5fr)_auto] md:gap-4 md:py-4"
+                : "grid-cols-[64px_minmax(0,1fr)_auto] gap-4 py-3 md:grid-cols-[90px_128px_minmax(0,1fr)_minmax(120px,0.5fr)_auto] md:gap-7 md:py-4"
             }`}
           >
             <time dateTime={event.startsAt} className="flex flex-col gap-1">
               <span
-                className={`font-light tracking-tight ${compact ? "text-xl md:text-2xl" : "text-3xl md:text-4xl"}`}
+                className={`font-light tracking-tight ${compact ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"}`}
               >
                 {eventDate(event, { day: "2-digit" })}
               </span>
@@ -58,7 +58,7 @@ export function EventList({
                 {eventDate(event, { month: "short", year: "numeric" })}
               </span>
             </time>
-            <div className="hidden aspect-square overflow-hidden rounded md:block">
+            <div className="hidden aspect-square overflow-hidden md:block">
               {event.cover && (
                 <img
                   src={contentImageUrl(event.cover.id)}
@@ -81,7 +81,7 @@ export function EventList({
                 {event.eventType}
               </p>
               <h2
-                className={`font-medium tracking-tight ${compact ? "mt-1 text-sm md:text-base" : "mt-2 text-lg md:text-2xl"}`}
+                className={`font-medium tracking-tight ${compact ? "mt-1 text-sm md:text-base" : "mt-2 text-[1.0625rem] md:text-[1.375rem]"}`}
               >
                 {event.title}
               </h2>

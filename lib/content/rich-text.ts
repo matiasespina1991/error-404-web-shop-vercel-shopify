@@ -59,7 +59,11 @@ export function sanitizeRichText(html: string, imageOrigin = ""): string {
           : {},
       }),
     },
-    exclusiveFilter: (frame) => frame.tag === "img" && !frame.attribs.src,
+    exclusiveFilter: (frame) =>
+      (frame.tag === "img" && !frame.attribs.src) ||
+      (frame.tag === "p" &&
+        !frame.text.replace(/&nbsp;|[\s\u00a0\u200b]/g, "") &&
+        !frame.mediaChildren.includes("img")),
   });
 }
 

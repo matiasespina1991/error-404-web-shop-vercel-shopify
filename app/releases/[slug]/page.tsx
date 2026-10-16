@@ -1,3 +1,4 @@
+import { ContentBreadcrumb } from "components/content/breadcrumb";
 import { LinkArrow } from "components/icons/link-arrow";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -28,13 +29,12 @@ export default async function ReleasePage({ params }: Props) {
   return (
     <>
       <article className="content-shell pb-16">
-        <Link
+        <ContentBreadcrumb
+          section="Releases"
           href="/releases"
-          className="text-sm text-neutral-400 hover:text-white"
-        >
-          ← All releases
-        </Link>
-        <div className="mt-8 grid items-start gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
+          title={release.title}
+        />
+        <div className="mt-4 grid items-start gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
           <div className="w-full max-w-md space-y-4">
             {release.cover && (
               <div className="overflow-hidden rounded-md bg-neutral-900">
@@ -65,7 +65,11 @@ export default async function ReleasePage({ params }: Props) {
             )}
           </div>
           <div className="min-w-0">
-            <BrandHeading as="h1" variant="page">
+            <BrandHeading
+              as="h1"
+              variant="page"
+              style={{ textTransform: "uppercase" }}
+            >
               {separator > 0 && producer && title ? (
                 <>
                   <span className="block">{producer}</span>

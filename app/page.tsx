@@ -90,7 +90,7 @@ export default async function HomePage() {
               <Link
                 href={`/events/${nextEvent.slug}`}
                 aria-label={`View ${nextEvent.title}`}
-                className="block overflow-hidden rounded-md"
+                className="block overflow-hidden"
               >
                 <img
                   src={contentImageUrl(nextEvent.cover.id)}

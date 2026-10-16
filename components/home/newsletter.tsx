@@ -26,11 +26,11 @@ export function Newsletter() {
             inbox.
           </p>
         </div>
-        <form onSubmit={subscribe} className="w-full max-w-md">
+        <form onSubmit={subscribe} className="w-full max-w-xs">
           <label htmlFor={`${id}-email`} className="sr-only">
             Email address
           </label>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             <input
               id={`${id}-email`}
               name="email"
@@ -40,13 +40,13 @@ export function Newsletter() {
               required
               maxLength={254}
               aria-describedby={`${id}-notice`}
-              className="min-h-11 w-full rounded-md border border-white/25 bg-transparent px-4 py-3 text-sm text-white placeholder:text-neutral-400"
+              className="h-10 w-full rounded-md border border-white/25 bg-transparent px-3 py-2 text-sm text-white placeholder:text-neutral-400"
             />
             <button
               type="submit"
-              className="flex min-h-11 w-full items-center justify-center gap-3 rounded-md bg-[#b7a2ef] px-4 py-3 text-sm font-medium text-black hover:bg-[#c7b4fa]"
+              className="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#b7a2ef] px-3 py-2 text-sm font-medium text-black hover:bg-[#c7b4fa]"
             >
-              Subscribe <ArrowRightIcon aria-hidden="true" className="size-5" />
+              Subscribe <ArrowRightIcon aria-hidden="true" className="size-4" />
             </button>
           </div>
           <p

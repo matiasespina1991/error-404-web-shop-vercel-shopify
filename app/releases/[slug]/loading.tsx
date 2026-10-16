@@ -10,8 +10,8 @@ export default function ReleaseLoading() {
         aria-hidden="true"
         className="animate-pulse motion-reduce:animate-none"
       >
-        <Placeholder className="h-5 w-28" />
-        <div className="mt-8 grid items-start gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
+        <Placeholder className="h-5 w-1/2 max-w-md" />
+        <div className="mt-4 grid items-start gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12">
           <Placeholder className="aspect-square w-full max-w-md rounded-md" />
           <div className="min-w-0">
             <div className="space-y-2">

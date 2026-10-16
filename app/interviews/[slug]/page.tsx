@@ -1,5 +1,5 @@
+import { ContentBreadcrumb } from "components/content/breadcrumb";
 import { BrandHeading } from "components/content/brand-heading";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "components/layout/footer";
 import { Paragraphs } from "components/content/cards";
@@ -21,36 +21,45 @@ export default async function InterviewPage({ params }: Props) {
   return (
     <>
       <article className="content-shell pb-20">
-        <Link href="/interviews" className="text-sm text-neutral-400">
-          ← All interviews
-        </Link>
-        <header className="my-10 max-w-4xl">
-          <BrandHeading as="h1" variant="page">
-            {entry.title}
-          </BrandHeading>
-          <p className="mt-6 text-xl leading-relaxed text-neutral-300">
-            {entry.summary}
-          </p>
-          <p className="mt-5 text-xs text-neutral-400">
-            {new Intl.DateTimeFormat("en-GB", {
-              dateStyle: "long",
-              timeZone: "UTC",
-            }).format(new Date(entry.publishedDate))}{" "}
-            · By {entry.interviewer || "Error404"}
-          </p>
-        </header>
-        {entry.cover && (
-          <img
-            src={contentImageUrl(entry.cover.id)}
-            alt={entry.cover.alt}
-            width={1400}
-            height={800}
-            fetchPriority="high"
-            className="mb-12 aspect-[16/9] w-full rounded-md object-cover"
-          />
-        )}
-        <div className="mx-auto max-w-2xl">
-          <Paragraphs text={entry.body} format={entry.bodyFormat} />
+        <ContentBreadcrumb
+          section="Interviews"
+          href="/interviews"
+          title={entry.title}
+        />
+        <BrandHeading
+          as="h1"
+          variant="page"
+          className="mt-4"
+          style={{ textTransform: "uppercase" }}
+        >
+          {entry.title}
+        </BrandHeading>
+        <div className="mt-6 flex flex-col lg:flow-root">
+          {entry.cover && (
+            <img
+              src={contentImageUrl(entry.cover.id)}
+              alt={entry.cover.alt}
+              width={1400}
+              height={800}
+              fetchPriority="high"
+              className="order-2 mb-6 aspect-[16/9] w-full rounded-md object-cover lg:float-right lg:ml-8 lg:w-1/2"
+            />
+          )}
+          <header className="order-1 mb-10">
+            <p className="text-xl leading-relaxed text-neutral-300">
+              {entry.summary}
+            </p>
+            <p className="mt-5 text-xs text-neutral-400">
+              {new Intl.DateTimeFormat("en-GB", {
+                dateStyle: "long",
+                timeZone: "UTC",
+              }).format(new Date(entry.publishedDate))}{" "}
+              · By {entry.interviewer || "Error404"}
+            </p>
+          </header>
+          <div className="order-3">
+            <Paragraphs text={entry.body} format={entry.bodyFormat} />
+          </div>
         </div>
         {entry.gallery.length > 0 && (
           <div className="mt-12 grid gap-4 sm:grid-cols-2">
