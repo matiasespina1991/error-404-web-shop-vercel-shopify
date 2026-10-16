@@ -8,7 +8,7 @@ import { Fragment, Suspense, useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LogoSquare from "components/logo-square";
 import { Menu } from "lib/shopify/types";
-import { shareTech } from "lib/fonts";
+import { aptos } from "lib/fonts";
 import Search, { SearchSkeleton } from "./search";
 
 export default function MobileMenu({ menu }: { menu: Menu[] }) {
@@ -81,7 +81,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 {menu.length ? (
                   <ul
                     className="header-menu-type flex w-full flex-col"
-                    style={{ fontFamily: shareTech.style.fontFamily }}
+                    style={{ fontFamily: aptos.style.fontFamily }}
                   >
                     {menu.map((item: Menu) => (
                       <li
@@ -89,6 +89,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                         key={item.title}
                       >
                         <NavLink
+                          style={{ textDecoration: "none" }}
                           href={item.path}
                           className="flex min-h-11 items-center"
                           prefetch={true}

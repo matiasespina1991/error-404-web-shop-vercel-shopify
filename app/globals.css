@@ -11,7 +11,7 @@
 }
 
 .header-menu-type {
-  font-family: var(--font-share-tech), Arial, sans-serif;
+  font-family: var(--font-aptos), Arial, sans-serif;
   letter-spacing: 0.03em;
   font-weight: 400;
   font-size: 0.95rem;
@@ -354,7 +354,7 @@ h3 {
     flex: none;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 1.7rem;
+    gap: 1.45rem;
   }
 }
 

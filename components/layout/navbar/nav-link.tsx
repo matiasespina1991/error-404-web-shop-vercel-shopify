@@ -23,7 +23,7 @@ export default function NavLink({
       {...props}
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`${className} underline-offset-4 ${active ? "underline" : "no-underline"}`}
+      className={`${className} decoration-[1px] underline-offset-4 ${active ? "underline" : "no-underline"}`}
     />
   );
 }

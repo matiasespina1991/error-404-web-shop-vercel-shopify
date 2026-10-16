@@ -1,7 +1,7 @@
 import CartModal from "components/cart/modal";
 import LogoSquare from "components/logo-square";
 import Link from "next/link";
-import { shareTech } from "lib/fonts";
+import { aptos } from "lib/fonts";
 import { siteNavigation } from "lib/navigation";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
@@ -20,7 +20,7 @@ export async function Navbar() {
       </div>
       <ul
         className="site-header-links header-menu-type"
-        style={{ fontFamily: shareTech.style.fontFamily }}
+        style={{ fontFamily: aptos.style.fontFamily }}
       >
         {menu.map((item) => (
           <li key={item.path}>
