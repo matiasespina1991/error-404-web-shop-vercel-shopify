@@ -528,6 +528,7 @@ h2,
 .release-summary {
   font-family: var(--font-aptos), Arial, sans-serif;
   font-size: 0.9rem;
+  line-height: 1.3rem;
 }
 .section-link,
 .release-format {
