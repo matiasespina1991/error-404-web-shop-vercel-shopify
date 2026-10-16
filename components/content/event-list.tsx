@@ -46,16 +46,26 @@ export function EventList({
                 : "grid-cols-[64px_minmax(0,1fr)_auto] gap-4 py-3 md:grid-cols-[90px_128px_minmax(0,1fr)_minmax(120px,0.5fr)_auto] md:gap-7 md:py-4"
             }`}
           >
-            <time dateTime={event.startsAt} className="flex flex-col gap-1">
+            <time
+              dateTime={event.startsAt}
+              className="flex flex-col gap-1"
+            >
               <span
-                className={`font-light tracking-tight ${compact ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"}`}
+                className={`font-light tracking-tight ${compact ? "text-base leading-none md:text-lg" : "text-2xl md:text-3xl"}`}
               >
-                {eventDate(event, { day: "2-digit" })}
+                {compact
+                  ? eventDate(event, { day: "2-digit", month: "2-digit" })
+                  : eventDate(event, { day: "2-digit" })}
               </span>
               <span
-                className={`uppercase tracking-widest text-neutral-400 ${compact ? "text-[10px]" : "text-xs"}`}
+                className={`uppercase tracking-widest text-neutral-400 ${compact ? "text-[11px] leading-tight" : "text-xs"}`}
               >
-                {eventDate(event, { month: "short", year: "numeric" })}
+                {eventDate(
+                  event,
+                  compact
+                    ? { year: "numeric" }
+                    : { month: "short", year: "numeric" },
+                )}
               </span>
             </time>
             <div className="hidden aspect-square overflow-hidden md:block">
@@ -94,20 +104,19 @@ export function EventList({
               >
                 {event.lineup.join(" / ")}
               </p>
-              <p
-                className={`text-xs text-neutral-400 md:hidden ${compact ? "mt-1" : "mt-2"}`}
-              >
-                {event.venue} · {event.city}
-              </p>
+              <div className={`text-xs md:hidden ${compact ? "mt-1" : "mt-2"}`}>
+                <p>{event.venue}</p>
+                <p className="mt-1 text-neutral-400">
+                  {event.city}, {event.country}
+                </p>
+              </div>
             </div>
             <div
               className={`hidden md:block ${compact ? "text-xs" : "text-sm"}`}
             >
-              <p>
-                {event.city}, {event.country}
-              </p>
+              <p>{event.venue}</p>
               <p className={`text-neutral-400 ${compact ? "mt-1" : "mt-2"}`}>
-                {event.venue}
+                {event.city}, {event.country}
               </p>
             </div>
             <div className="flex items-center gap-4">

@@ -73,7 +73,7 @@ export default async function HomePage() {
         )}
       </ContentRail>
       <section className="content-section" aria-labelledby="home-events-title">
-        <div className="mb-5 flex flex-col items-start gap-2">
+        <div className="mb-5 flex flex-col items-start gap-1">
           <BrandHeading id="home-events-title">Next Events</BrandHeading>
           <Link
             href="/events"
