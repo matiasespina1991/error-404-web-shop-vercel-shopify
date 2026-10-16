@@ -412,7 +412,7 @@ main > .content-section:first-of-type {
 .rich-content h5,
 .rich-content h6 {
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.3rem;
 }
 .rich-content h1 {
   font-size: 1.75em;
@@ -466,7 +466,7 @@ h2,
 .rich-content h2,
 .section-title,
 .content-title {
-  line-height: 1.6rem;
+  line-height: 1.4rem;
 }
 
 /* One scale for condensed short copy; previews keep their original size. */
@@ -527,6 +527,11 @@ h2,
 .section-link,
 .release-summary {
   font-family: var(--font-aptos), Arial, sans-serif;
+  font-size: 0.9rem;
+}
+.section-link,
+.release-format {
+  font-family: "Helvetica", Arial, sans-serif;
 }
 .section-link {
   letter-spacing: -0.01em;

@@ -1,7 +1,7 @@
-import Link from "next/link";
 import type { ReleaseContent } from "lib/content/entries";
 import { contentImageUrl } from "lib/content/feed";
 import { releaseFormatLabel } from "lib/content/releases";
+import Link from "next/link";
 
 export function ReleaseCard({
   release,
@@ -16,7 +16,7 @@ export function ReleaseCard({
   return (
     <Link
       href={`/releases/${release.slug}`}
-      className="font-condensed group flex h-full flex-col"
+      className="group flex h-full flex-col"
     >
       <div className="aspect-square overflow-hidden rounded-md bg-neutral-900">
         {release.cover && (
@@ -35,17 +35,17 @@ export function ReleaseCard({
           {splitTitle && separator > 0 && artist && title ? (
             <>
               <span className="block text-left">{artist}</span>
-              <span className="block text-left">{title}</span>
+              <span className="block text-left capitalize">{title}</span>
             </>
           ) : (
             release.title
           )}
         </h3>
-        <p className="mt-1 text-xs text-neutral-400">
+        <p className="release-format mt-1 text-xs text-neutral-400">
           {releaseFormatLabel(release.format)}
           {release.genres.length ? ` · ${release.genres.join(" / ")}` : ""}
         </p>
-        <p className="release-summary mt-2 line-clamp-2 carousel-preview text-sm leading-relaxed text-neutral-400">
+        <p className="release-summary mt-1 line-clamp-2 carousel-preview text-sm leading-relaxed text-neutral-400">
           {release.summary}
         </p>
       </div>

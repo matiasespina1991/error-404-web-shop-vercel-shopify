@@ -22,7 +22,7 @@ export default function ReleaseLoading() {
               <div className="flex h-[1.6rem] items-center">
                 <Placeholder className="h-[0.8em] w-1/2" />
               </div>
-              <div className="flex h-[1.6rem] items-center">
+              <div className="flex pt-8 h-[1.6rem] items-center">
                 <Placeholder className="h-[0.8em] w-5/6" />
               </div>
             </div>

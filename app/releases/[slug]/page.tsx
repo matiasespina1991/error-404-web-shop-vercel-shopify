@@ -1,14 +1,13 @@
+import { BrandHeading } from "components/content/brand-heading";
 import { ContentBreadcrumb } from "components/content/breadcrumb";
+import { RichText } from "components/content/rich-text";
 import { DiscIcon } from "components/icons/disc";
 import { LinkArrow } from "components/icons/link-arrow";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 import Footer from "components/layout/footer";
-import { BrandHeading } from "components/content/brand-heading";
-import { RichText } from "components/content/rich-text";
 import { ReleaseTrackPlayer } from "components/releases/track-player";
 import { contentImageUrl, getContentEntry } from "lib/content/feed";
 import { releaseFormatLabel } from "lib/content/releases";
+import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
@@ -69,8 +68,8 @@ export default async function ReleasePage({ params }: Props) {
             <BrandHeading as="h1" variant="page">
               {separator > 0 && producer && title ? (
                 <>
-                  <span className="block">{producer}</span>
-                  <span className="block">{title}</span>
+                  <span className="block leading-[2.3rem]">{producer}</span>
+                  <span className="block leading-[2.3rem]">{title}</span>
                 </>
               ) : (
                 release.title
