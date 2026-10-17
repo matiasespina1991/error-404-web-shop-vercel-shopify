@@ -1,14 +1,16 @@
 "use client";
-import { microgramma } from "lib/fonts";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { microgramma } from "lib/fonts";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 export function ContentRail({
   title,
+  className,
   uppercaseTitle = true,
   children,
   link,
 }: {
   title: string;
+  className?: string;
   uppercaseTitle?: boolean;
   children: ReactNode;
   link: ReactNode;
@@ -54,10 +56,10 @@ export function ContentRail({
   return (
     <section
       aria-labelledby={`${id}-title`}
-      className="content-section font-condensed"
+      className={`content-section font-condensed${className ? ` ${className}` : ""}`}
     >
       <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+        <div className="flex w-full flex-wrap items-baseline justify-between gap-x-4 gap-y-2 md:w-auto md:justify-start">
           <h2
             id={`${id}-title`}
             className="section-title carousel-title"
@@ -69,10 +71,12 @@ export function ContentRail({
           >
             {title}
           </h2>
-          <div className="section-link text-xs text-neutral-300">{link}</div>
+          <div className="section-link ml-auto whitespace-nowrap text-neutral-300 md:ml-0">
+            {link}
+          </div>
         </div>
         {edges.scrollable && (
-          <div className="flex gap-1">
+          <div className="hidden gap-1 md:flex">
             <button
               className="rail-arrow"
               aria-label={`Previous ${title}`}

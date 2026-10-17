@@ -18,8 +18,8 @@ export function FooterMenuItem({ item }: { item: Menu }) {
 export default function FooterMenu({ menu }: { menu: Menu[] }) {
   if (!menu.length) return null;
   return (
-    <nav aria-label="Footer navigation" className="pt-[0.1rem]">
-      <ul className="md:grid md:grid-flow-col md:grid-rows-3 md:gap-x-10">
+    <nav aria-label="Footer navigation" className="pt-[0.1rem] pl-[0.3rem]">
+      <ul className="md:grid md:grid-flow-col md:grid-rows-3 flex flex-col gap-2 md:gap-x-10">
         {menu.map((item) => (
           <FooterMenuItem key={item.path} item={item} />
         ))}

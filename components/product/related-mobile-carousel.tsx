@@ -55,7 +55,7 @@ export function RelatedMobileCarousel({ products }: { products: Product[] }) {
   };
 
   const arrows = (
-    <div className="flex shrink-0 gap-1">
+    <div className="hidden shrink-0 gap-1 md:flex">
       <button
         type="button"
         aria-label="Previous related products"

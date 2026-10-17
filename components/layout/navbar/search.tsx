@@ -64,7 +64,7 @@ export default function Search({
           aria-controls={id}
           onClick={() => setOpen(true)}
         >
-          <MagnifyingGlassIcon className="size-5" aria-hidden="true" />
+          <MagnifyingGlassIcon className="size-[22px]" aria-hidden="true" />
         </button>
       ) : (
         <Form
@@ -91,7 +91,7 @@ export default function Search({
               aria-label="Search"
               className="header-search-toggle"
             >
-              <MagnifyingGlassIcon className="size-5" aria-hidden="true" />
+              <MagnifyingGlassIcon className="size-[22px]" aria-hidden="true" />
             </button>
             {expandable && (
               <button
@@ -119,7 +119,7 @@ export function SearchSkeleton({
     return (
       <div className="header-search-control" aria-hidden="true">
         <span className="header-search-toggle">
-          <MagnifyingGlassIcon className="size-5" />
+          <MagnifyingGlassIcon className="size-[22px]" />
         </span>
       </div>
     );

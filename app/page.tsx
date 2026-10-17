@@ -50,35 +50,12 @@ export default async function HomePage() {
   return (
     <>
       <h1 className="sr-only">Error404 — Records, interviews and events</h1>
-      <ContentRail
-        title="Releases"
-        uppercaseTitle={false}
-        link={
-          <Link href="/releases" className="hover:text-white">
-            See all releases <LinkArrow />
-          </Link>
-        }
-      >
-        {releases.items.slice(0, 12).map(
-          (entry) =>
-            entry.kind === "releases" && (
-              <li key={entry.slug} className="record-slide">
-                <ReleaseCard release={entry} splitTitle />
-              </li>
-            ),
-        )}
-        {!releases.items.length && (
-          <li className="py-6 text-sm text-neutral-400">
-            New releases coming soon.
-          </li>
-        )}
-      </ContentRail>
       <section className="content-section" aria-labelledby="home-events-title">
-        <div className="mb-5 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+        <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 md:justify-start">
           <BrandHeading id="home-events-title">Next Events</BrandHeading>
           <Link
             href="/events"
-            className="section-link text-xs text-neutral-300 hover:text-white"
+            className="section-link ml-auto whitespace-nowrap text-neutral-300 hover:text-white md:ml-0"
           >
             See all events <LinkArrow />
           </Link>
@@ -87,7 +64,7 @@ export default async function HomePage() {
           className={`grid items-start gap-8 lg:gap-12 ${nextEvent?.cover ? "lg:grid-cols-[340px_minmax(0,1fr)]" : ""}`}
         >
           {nextEvent?.cover && (
-            <figure className="w-full max-w-[340px]">
+            <figure className="mx-auto w-[95%] md:w-full md:max-w-[340px] lg:mx-0">
               <Link
                 href={`/events/${nextEvent.slug}`}
                 aria-label={`View ${nextEvent.title}`}
@@ -97,14 +74,14 @@ export default async function HomePage() {
                   src={contentImageUrl(nextEvent.cover.id)}
                   alt={nextEvent.cover.alt}
                   fetchPriority="high"
-                  className="max-h-[420px] w-full object-contain object-left"
+                  className="w-full object-contain object-center md:max-h-[420px] lg:object-left"
                 />
               </Link>
               <figcaption className="font-condensed mt-3 text-center text-sm">
                 <h2 className="event-list-title text-sm font-medium tracking-tight md:text-base">
                   <Link
                     href={`/events/${nextEvent.slug}`}
-                    className="hover:underline"
+                    className="text-[1.15rem] hover:underline"
                   >
                     {nextEvent.title.toUpperCase()}
                   </Link>
@@ -127,8 +104,32 @@ export default async function HomePage() {
         </div>
       </section>
       <ContentRail
+        title="Releases"
+        uppercaseTitle={false}
+        link={
+          <Link href="/releases" className="hover:text-white">
+            See all releases <LinkArrow />
+          </Link>
+        }
+      >
+        {releases.items.slice(0, 12).map(
+          (entry) =>
+            entry.kind === "releases" && (
+              <li key={entry.slug} className="record-slide release-slide">
+                <ReleaseCard release={entry} splitTitle />
+              </li>
+            ),
+        )}
+        {!releases.items.length && (
+          <li className="py-6 text-sm text-neutral-400">
+            New releases coming soon.
+          </li>
+        )}
+      </ContentRail>
+      <ContentRail
         title="Shop"
         uppercaseTitle={false}
+        className="!pt-0"
         link={
           <Link href="/shop" className="hover:text-white">
             To the shop <LinkArrow />
@@ -166,6 +167,7 @@ export default async function HomePage() {
       </ContentRail>
       <ContentRail
         title="Interviews"
+        className="!pt-0"
         uppercaseTitle={false}
         link={
           <Link href="/interviews" className="hover:text-white">

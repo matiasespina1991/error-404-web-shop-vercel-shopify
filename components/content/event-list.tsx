@@ -37,7 +37,9 @@ export function EventList({
       </p>
     );
   return (
-    <ul className="font-condensed divide-y divide-white/15 border-y border-white/15">
+    <ul
+      className={`font-condensed divide-y divide-white/15 border-y border-white/15 ${compact ? "next-event-tiles" : ""}`}
+    >
       {events.map((event) => (
         <li key={event.slug}>
           <Link

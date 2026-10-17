@@ -3,12 +3,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import NavLink from "./nav-link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Fragment, Suspense, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import LogoSquare from "components/logo-square";
 import { Menu } from "lib/shopify/types";
-import Search, { SearchSkeleton } from "./search";
 
 export default function MobileMenu({ menu }: { menu: Menu[] }) {
   const pathname = usePathname();
@@ -38,7 +37,17 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
         aria-label="Open mobile menu"
         className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors xl:hidden"
       >
-        <Bars3Icon className="size-7" aria-hidden="true" />
+        <svg
+          viewBox="0 0 32 24"
+          className="h-6 w-8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.5}
+          strokeLinecap="round"
+          aria-hidden="true"
+        >
+          <path d="M2 8h28M2 16h28" />
+        </svg>
       </button>
       <Transition show={isOpen}>
         <Dialog onClose={closeMobileMenu} className="relative z-50">
@@ -72,13 +81,8 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   <XMarkIcon className="h-6" />
                 </button>
 
-                <div className="mb-4 w-full">
-                  <Suspense fallback={<SearchSkeleton />}>
-                    <Search />
-                  </Suspense>
-                </div>
                 {menu.length ? (
-                  <ul className="header-menu-type header-nav-type flex w-full flex-col">
+                  <ul className="header-menu-type mobile-menu-type flex w-full flex-col pt-4">
                     {menu.map((item: Menu) => (
                       <li
                         className="py-2 text-black transition-colors hover:text-neutral-500 dark:text-white"
@@ -91,7 +95,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                           prefetch={true}
                           onClick={closeMobileMenu}
                         >
-                          {item.title}
+                          {item.title.toUpperCase()}
                         </NavLink>
                       </li>
                     ))}
@@ -99,7 +103,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 ) : null}
               </div>
               <div className="ml-2">
-                <LogoSquare />
+                <LogoSquare size="lg" />
               </div>
             </Dialog.Panel>
           </Transition.Child>

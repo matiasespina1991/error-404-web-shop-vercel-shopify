@@ -30,7 +30,7 @@ export default async function EventPage({ params }: Props) {
     }).format(new Date(value));
   return (
     <>
-      <article className="mx-auto w-full max-w-[1000px] px-4 pb-20 md:px-8">
+      <article className="mx-auto w-full max-w-[950px] px-4 pb-20 md:px-8">
         <ContentBreadcrumb
           section="Events"
           href="/events"
@@ -48,7 +48,7 @@ export default async function EventPage({ params }: Props) {
             {eventDate(event)} · {event.venue}
           </p>
         </header>
-        <div className="grid items-start gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-8">
+        <div className="grid items-start gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-16">
           <div>
             {event.cover && (
               <div className="overflow-hidden bg-neutral-900">
@@ -99,8 +99,8 @@ export default async function EventPage({ params }: Props) {
             <p className="text-sm leading-relaxed text-neutral-200">
               {event.summary}
             </p>
-            <section className="my-5">
-              <h2 className="content-eyebrow mb-1">Line-up</h2>
+            <section className="my-10">
+              <h2 className="content-eyebrow mb-5">Line-up</h2>
               <ul className="space-y-2 text-2xl font-light">
                 {event.lineup.map((artist, i) => (
                   <li key={i}>{artist}</li>
