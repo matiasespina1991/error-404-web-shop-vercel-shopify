@@ -27,7 +27,7 @@ export default function NavLink({
       {...props}
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`nav-menu-link ${className} decoration-[1px] underline-offset-4 ${active && showActiveUnderline ? "underline" : "no-underline"}`}
+      className={`nav-menu-link ${className} decoration-[0.6px] underline-offset-4 ${active ? "text-white" : ""} ${active && showActiveUnderline ? "underline" : "no-underline"}`}
     />
   );
 }

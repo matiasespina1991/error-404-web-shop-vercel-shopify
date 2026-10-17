@@ -43,7 +43,7 @@ export default async function EventsPage({
                   : "pb-2 text-neutral-400 hover:text-white"
               }
             >
-              {value === "past" ? "Archive" : "Upcoming"}
+              {value === "past" ? "Past Events" : "Upcoming Events"}
             </Link>
           ))}
         </nav>
