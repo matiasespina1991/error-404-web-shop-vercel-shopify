@@ -30,21 +30,25 @@ export default async function EventPage({ params }: Props) {
     }).format(new Date(value));
   return (
     <>
-      <article className="content-shell pb-20">
+      <article className="mx-auto w-full max-w-[1000px] px-4 pb-20 md:px-8">
         <ContentBreadcrumb
           section="Events"
           href="/events"
           title={event.title}
         />
-        <header className="mt-4 mb-4">
-          <BrandHeading as="h1" variant="page" className="max-w-5xl">
+        <header className="mt-2 mb-4">
+          <BrandHeading
+            as="h1"
+            variant="page"
+            style={{ lineHeight: "2rem", textWrap: "wrap" }}
+          >
             {event.title}
           </BrandHeading>
-          <p className="mt-2 text-[0.9rem] text-neutral-400">
+          <p className="mt-[0.3rem] text-[0.85rem] text-neutral-400">
             {eventDate(event)} · {event.venue}
           </p>
         </header>
-        <div className="grid items-start gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-16">
+        <div className="grid items-start gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-8">
           <div>
             {event.cover && (
               <div className="overflow-hidden bg-neutral-900">
@@ -95,80 +99,94 @@ export default async function EventPage({ params }: Props) {
             <p className="text-sm leading-relaxed text-neutral-200">
               {event.summary}
             </p>
-            <section className="my-10">
-              <h2 className="content-eyebrow mb-5">Line-up</h2>
+            <section className="my-5">
+              <h2 className="content-eyebrow mb-1">Line-up</h2>
               <ul className="space-y-2 text-2xl font-light">
                 {event.lineup.map((artist, i) => (
                   <li key={i}>{artist}</li>
                 ))}
               </ul>
             </section>
-            <dl className="mb-10 grid grid-cols-[90px_minmax(0,1fr)] gap-x-5 gap-y-4 text-sm leading-relaxed">
-              <dt className="text-neutral-400">Starts</dt>
-              <dd>{time(event.startsAt)}</dd>
-              <dt className="text-neutral-400">Ends</dt>
-              <dd>
-                {time(event.endsAt)}
-                <span className="mt-1 block text-xs text-neutral-400">
-                  {event.timeZone}
-                </span>
-              </dd>
-              <dt className="text-neutral-400">Venue</dt>
-              <dd>{event.venue}</dd>
-              <dt className="text-neutral-400">Address</dt>
-              <dd>
-                {[
-                  event.address,
-                  event.postalCode,
-                  event.city,
-                  event.region,
-                  event.country,
-                ]
-                  .filter(Boolean)
-                  .join(", ")}
-                {source !== "mock" && (
-                  <a
-                    href={map}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-2 block underline underline-offset-4"
-                  >
-                    Get directions <LinkArrow />
-                  </a>
-                )}
-              </dd>
+            <dl className="mb-10 space-y-3 text-sm leading-relaxed">
+              <div className="flex items-baseline gap-2">
+                <dt className="shrink-0 text-neutral-400">Starts</dt>
+                <dd>{time(event.startsAt)}</dd>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <dt className="shrink-0 text-neutral-400">Ends</dt>
+                <dd>
+                  {time(event.endsAt)}
+                  <span className="mt-1 block text-xs text-neutral-400">
+                    {event.timeZone}
+                  </span>
+                </dd>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <dt className="shrink-0 text-neutral-400">Venue</dt>
+                <dd>{event.venue}</dd>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <dt className="shrink-0 text-neutral-400">Address</dt>
+                <dd>
+                  {[
+                    event.address,
+                    event.postalCode,
+                    event.city,
+                    event.region,
+                    event.country,
+                  ]
+                    .filter(Boolean)
+                    .join(", ")}
+                  {source !== "mock" && (
+                    <a
+                      href={map}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2 block underline underline-offset-4"
+                    >
+                      Get directions <LinkArrow />
+                    </a>
+                  )}
+                </dd>
+              </div>
               {event.price && (
                 <>
-                  <dt className="text-neutral-400">Entry</dt>
-                  <dd>{event.price}</dd>
+                  <div className="flex items-baseline gap-2">
+                    <dt className="shrink-0 text-neutral-400">Entry</dt>
+                    <dd>{event.price}</dd>
+                  </div>
                 </>
               )}
               {event.contactEmail && (
                 <>
-                  <dt className="text-neutral-400">Contact</dt>
-                  <dd>
-                    <a
-                      href={`mailto:${event.contactEmail}`}
-                      className="break-all underline"
-                    >
-                      {event.contactEmail}
-                    </a>
-                  </dd>
+                  <div className="flex items-baseline gap-2">
+                    <dt className="shrink-0 text-neutral-400">Contact</dt>
+                    <dd>
+                      <a
+                        href={`mailto:${event.contactEmail}`}
+                        className="break-all underline"
+                      >
+                        {event.contactEmail}
+                      </a>
+                    </dd>
+                  </div>
                 </>
               )}
               {event.websiteUrl && (
                 <>
-                  <dt className="text-neutral-400">Website</dt>
-                  <dd>
-                    <a
-                      href={event.websiteUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline"
-                    >
-                      Visit website <LinkArrow />
-                    </a>
-                  </dd>
+                  <div className="flex items-baseline gap-2">
+                    <dt className="shrink-0 text-neutral-400">Website</dt>
+                    <dd>
+                      <a
+                        href={event.websiteUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline"
+                      >
+                        Visit website <LinkArrow />
+                      </a>
+                    </dd>
+                  </div>
                 </>
               )}
             </dl>

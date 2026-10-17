@@ -50,7 +50,7 @@ export default async function RootLayout({
       <body className="bg-black text-white selection:bg-[#7594d52e] selection:text-white">
         <CartProvider cartPromise={cart}>
           <Navbar />
-          <main>
+          <main className="pt-4">
             {children}
             <Toaster closeButton />
           </main>

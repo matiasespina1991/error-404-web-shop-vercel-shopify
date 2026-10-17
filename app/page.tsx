@@ -151,7 +151,7 @@ export default async function HomePage() {
                 />
               </div>
               <div className="product-card-copy grow pt-3">
-                <h3 className="uppercase min-w-0 flex-1 line-clamp-3 font-medium">
+                <h3 className="uppercase min-w-0 flex-1 line-clamp-3 font-semibold">
                   <ProductCardTitle product={product} />
                 </h3>
                 <Price

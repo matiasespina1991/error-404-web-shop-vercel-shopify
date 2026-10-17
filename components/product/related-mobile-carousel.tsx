@@ -111,7 +111,7 @@ export function RelatedMobileCarousel({ products }: { products: Product[] }) {
                   />
                 </div>
                 <div className="product-card-copy grow bg-[#171717] p-3">
-                  <h4 className="min-w-0 flex-1 line-clamp-3 font-medium text-neutral-200">
+                  <h4 className="min-w-0 flex-1 line-clamp-3 font-semibold text-neutral-200">
                     <ProductCardTitle product={product} splitTitle={false} />
                   </h4>
                   <Price

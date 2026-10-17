@@ -1,9 +1,9 @@
 import { BrandHeading } from "components/content/brand-heading";
-import Link from "next/link";
-import Footer from "components/layout/footer";
 import { EventList } from "components/content/event-list";
-import { getContentPage } from "lib/content/feed";
+import Footer from "components/layout/footer";
 import type { EventContent } from "lib/content/entries";
+import { getContentPage } from "lib/content/feed";
+import Link from "next/link";
 export async function generateMetadata() {
   const page = await getContentPage("events");
   return {
@@ -23,7 +23,7 @@ export default async function EventsPage({
   return (
     <>
       <div className="content-shell pb-16">
-        <header className="mb-2">
+        <header className="mb-6">
           <BrandHeading as="h1" variant="page">
             Events
           </BrandHeading>

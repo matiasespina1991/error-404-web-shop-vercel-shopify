@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { dax } from "lib/fonts";
 
-const MAX_TITLE_CHARACTERS = 45;
+const MAX_TITLE_CHARACTERS = 65;
 
 export function ContentBreadcrumb({
   section,
@@ -22,15 +22,19 @@ export function ContentBreadcrumb({
   return (
     <nav
       aria-label="Breadcrumb"
-      className={`${dax.className} text-base text-neutral-200 uppercase`}
+      className={`${dax.className} text-base text-[#979797] uppercase`}
     >
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <li>
-          <Link href="/">ERROR404</Link>
+          <Link href="/" className="hover:text-white">
+            ERROR404
+          </Link>
         </li>
         <li aria-hidden="true">/</li>
         <li>
-          <Link href={href}>{section.toUpperCase()}</Link>
+          <Link href={href} className="hover:text-white">
+            {section.toUpperCase()}
+          </Link>
         </li>
         <li aria-hidden="true">/</li>
         <li aria-current="page" title={fullTitle} aria-label={fullTitle}>

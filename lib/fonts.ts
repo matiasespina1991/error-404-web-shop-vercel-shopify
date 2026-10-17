@@ -74,6 +74,15 @@ export const helveticaCondensed = localFont({
   adjustFontFallback: false,
 });
 
+export const eurostileMedium = localFont({
+  src: "../fonts/eurostile/fonnts.com-Eurostile_Medium.otf",
+  weight: "500",
+  style: "normal",
+  display: "swap",
+  fallback: ["Arial", "sans-serif"],
+  adjustFontFallback: false,
+});
+
 export const eurostile = localFont({
   src: "../fonts/eurostile/fonnts.com-Eurostile.otf",
   weight: "400",

@@ -21,7 +21,7 @@ const Label = ({
       })}
     >
       <div className="product-card-copy w-full py-[0.844rem] font-normal text-neutral-200">
-        <h3 className="uppercase min-w-0 grow line-clamp-3 font-semibold sm:font-normal tracking-normal">
+        <h3 className="uppercase min-w-0 grow line-clamp-3 font-semibold tracking-normal">
           {title}
         </h3>
         <Price

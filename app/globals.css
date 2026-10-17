@@ -30,7 +30,6 @@ body {
   text-transform: none;
 }
 
-.header-menu-type.header-nav-type,
 .footer-copyright {
   font-family:
     "Error404 Helvetica Condensed Light", Helvetica, Arial, sans-serif;
@@ -38,7 +37,8 @@ body {
 }
 
 .header-menu-type.header-nav-type {
-  font-size: 1.1rem;
+  font-family: var(--font-aptos), Arial, sans-serif;
+  font-size: 0.9rem !important;
 }
 
 @layer base {
@@ -73,7 +73,7 @@ button {
 .content-shell,
 .content-section {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1300px;
   margin-inline: auto;
   padding-inline: 1rem;
 }
@@ -244,10 +244,10 @@ h3 {
   align-items: end;
   gap: 0.5rem;
   width: 100%;
-  max-width: 1600px;
+  max-width: 1300px;
   margin-inline: auto;
   padding: 1rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   background: #000;
   color: #fff;
 }
@@ -267,7 +267,7 @@ h3 {
   grid-row: 1;
 }
 .site-header-logo img {
-  object-position: center bottom;
+  object-position: center;
 }
 .site-header-actions {
   grid-column: 3;
@@ -381,7 +381,7 @@ h3 {
     flex: none;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 1.45rem;
+    gap: 1.3rem;
   }
 }
 
@@ -520,6 +520,8 @@ h2,
   white-space: nowrap;
 }
 .product-card-copy > :is(h3, h4) {
+  font-weight: 600;
+  font-synthesis: weight;
   min-width: 0;
   overflow-wrap: anywhere;
 }
@@ -536,4 +538,18 @@ h2,
 }
 .section-link {
   letter-spacing: -0.01em;
+}
+
+.shop-filters {
+  font-weight: 300;
+}
+.shop-filters .filter-option {
+  font-size: 0.9375rem;
+  font-weight: 300;
+}
+.shop-filters .text-xs {
+  font-size: 0.8125rem;
+}
+.shop-filters .text-sm {
+  font-size: 0.9375rem;
 }
