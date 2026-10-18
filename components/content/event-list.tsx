@@ -50,7 +50,10 @@ export function EventList({
                 : "grid-cols-[64px_minmax(0,1fr)_auto] gap-4 py-3 md:grid-cols-[90px_128px_minmax(0,1fr)_minmax(120px,0.5fr)_7rem] md:gap-7 md:py-4"
             }`}
           >
-            <time dateTime={event.startsAt} className="flex flex-col gap-1">
+            <time
+              dateTime={event.startsAt}
+              className="flex flex-col items-center gap-1 text-center"
+            >
               <span
                 className={`font-light tracking-tight ${compact ? "text-base leading-none md:text-lg" : "text-2xl md:text-3xl"}`}
               >

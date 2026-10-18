@@ -1,6 +1,8 @@
+import { SkeletonTransition } from "components/content/loading-transition";
+
 export default function Loading() {
   return (
-    <div role="status" className="content-shell pb-16">
+    <SkeletonTransition role="status" className="content-shell pb-16">
       <div className="mb-8 h-8 w-48 animate-pulse rounded bg-neutral-900 motion-reduce:animate-none" />
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
         {Array.from({ length: 5 }, (_, index) => (
@@ -11,6 +13,6 @@ export default function Loading() {
         ))}
       </div>
       <span className="sr-only">Loading releases</span>
-    </div>
+    </SkeletonTransition>
   );
 }

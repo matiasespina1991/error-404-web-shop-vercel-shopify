@@ -1,3 +1,4 @@
+import { SkeletonTransition } from "components/content/loading-transition";
 import ProductCardTitle from "components/product/card-title";
 import { ContentBreadcrumb } from "components/content/breadcrumb";
 import { GridTileImage } from "components/grid/tile";
@@ -95,7 +96,9 @@ export default async function ProductPage(props: {
           <div className="w-full min-w-0 basis-full lg:basis-1/2">
             <Suspense
               fallback={
-                <div className="relative aspect-square w-full max-w-[420px] overflow-hidden rounded-lg bg-neutral-100" />
+                <SkeletonTransition>
+                  <div className="relative aspect-square w-full max-w-[420px] animate-pulse overflow-hidden rounded-lg bg-neutral-100" />
+                </SkeletonTransition>
               }
             >
               <Gallery

@@ -19,7 +19,7 @@ export default async function AboutPage() {
   const content = await getPublishedAbout();
   return (
     <>
-      <article className="content-shell pb-20 pt-[1.3rem]">
+      <article className="content-shell pb-20 ">
         <BrandHeading as="h1" variant="page" className="mb-6">
           {content?.title || "About"}
         </BrandHeading>

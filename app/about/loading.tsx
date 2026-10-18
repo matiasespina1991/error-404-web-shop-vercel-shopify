@@ -1,6 +1,8 @@
+import { SkeletonTransition } from "components/content/loading-transition";
+
 export default function AboutLoading() {
   return (
-    <div
+    <SkeletonTransition
       role="status"
       aria-label="Loading About"
       className="content-shell pb-20"
@@ -14,6 +16,6 @@ export default function AboutLoading() {
         <div className="mb-10 h-6 w-3/4 rounded bg-neutral-800" />
         <div className="aspect-[3/2] w-full rounded bg-neutral-900" />
       </div>
-    </div>
+    </SkeletonTransition>
   );
 }

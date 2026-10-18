@@ -38,7 +38,7 @@ body {
 
 .header-menu-type.header-nav-type {
   font-family: var(--font-aptos), Arial, sans-serif;
-  font-size: 0.9rem !important;
+  font-size: 0.95rem !important;
 }
 
 @layer base {
@@ -89,7 +89,7 @@ button {
   color: #aaa;
 }
 h2.content-eyebrow {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 .section-title,
 .content-title {
@@ -112,7 +112,7 @@ h2.content-eyebrow {
   font-size: clamp(1.375rem, 2vw, 1.875rem);
 }
 .content-title {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
 }
 h1 {
   text-transform: none;
@@ -540,7 +540,7 @@ h2,
 .section-link,
 .release-summary {
   font-family: var(--font-aptos), Arial, sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.3rem;
 }
 .section-link,
@@ -625,5 +625,41 @@ h2,
   }
   .next-event-tiles p.uppercase {
     font-size: 0.75rem;
+  }
+}
+
+.event-timeline {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.9;
+}
+
+@keyframes content-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.skeleton-enter {
+  animation: content-reveal 180ms ease-out both;
+}
+.skeleton-enter .animate-pulse,
+.skeleton-exit .animate-pulse {
+  filter: blur(3px);
+}
+main > :not([data-skeleton]):not(script) {
+  animation: content-reveal 220ms ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-enter,
+  main > :not([data-skeleton]):not(script),
+  .skeleton-enter .animate-pulse {
+    animation: none;
+  }
+  .skeleton-enter .animate-pulse {
+    filter: none;
   }
 }

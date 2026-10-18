@@ -30,7 +30,7 @@ export default async function EventsPage({
         </header>
         <nav
           aria-label="Event timeline"
-          className="font-condensed mb-4 flex gap-7 text-sm"
+          className="event-timeline mb-4 flex gap-7"
         >
           {["upcoming", "past"].map((value) => (
             <Link
@@ -39,7 +39,7 @@ export default async function EventsPage({
               aria-current={timeline === value ? "page" : undefined}
               className={
                 timeline === value
-                  ? "border-b border-white pb-2"
+                  ? "border-b-[0.5px] border-white pb-2"
                   : "pb-2 text-neutral-400 hover:text-white"
               }
             >

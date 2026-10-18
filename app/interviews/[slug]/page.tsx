@@ -26,7 +26,7 @@ export default async function InterviewPage({ params }: Props) {
           href="/interviews"
           title={entry.title}
         />
-        <BrandHeading as="h1" variant="page" className="mt-4">
+        <BrandHeading as="h1" variant="page" className="mt-4 !text-[2rem]">
           {entry.title}
         </BrandHeading>
         <div className="mt-6 flex flex-col lg:flow-root">
@@ -40,11 +40,11 @@ export default async function InterviewPage({ params }: Props) {
               className="order-2 mb-6 aspect-[16/9] w-full rounded-md object-cover lg:float-right lg:ml-8 lg:w-1/2"
             />
           )}
-          <header className="order-1 mb-10">
-            <p className="text-xl leading-relaxed text-neutral-300">
+          <header className="order-1 mb-8">
+            <p className="text-[1.05rem] leading-relaxed text-neutral-300 italic">
               {entry.summary}
             </p>
-            <p className="mt-5 text-xs text-neutral-400">
+            <p className="mt-5 text-sm text-neutral-400">
               {new Intl.DateTimeFormat("en-GB", {
                 dateStyle: "long",
                 timeZone: "UTC",

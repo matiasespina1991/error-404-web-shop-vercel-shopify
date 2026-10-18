@@ -1,10 +1,12 @@
+import { SkeletonTransition } from "components/content/loading-transition";
+
 function Placeholder({ className }: { className: string }) {
   return <div className={`rounded bg-neutral-900 ${className}`} />;
 }
 
 export default function ReleaseLoading() {
   return (
-    <div role="status" className="content-shell pb-16">
+    <SkeletonTransition role="status" className="content-shell pb-16">
       <span className="sr-only">Loading release</span>
       <div
         aria-hidden="true"
@@ -58,6 +60,6 @@ export default function ReleaseLoading() {
           </div>
         </div>
       </div>
-    </div>
+    </SkeletonTransition>
   );
 }

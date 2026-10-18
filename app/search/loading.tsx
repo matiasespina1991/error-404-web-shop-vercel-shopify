@@ -1,8 +1,9 @@
+import { SkeletonTransition } from "components/content/loading-transition";
 import Grid from "components/grid";
 
 export default function Loading() {
   return (
-    <>
+    <SkeletonTransition>
       <div className="mb-4 h-6" />
       <Grid className="grid-cols-2 lg:grid-cols-4">
         {Array(12)
@@ -16,6 +17,6 @@ export default function Loading() {
             );
           })}
       </Grid>
-    </>
+    </SkeletonTransition>
   );
 }

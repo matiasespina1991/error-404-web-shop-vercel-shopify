@@ -21,7 +21,7 @@ export default async function InterviewsPage({
   const page = await getContentPage("interviews", "upcoming", cursor);
   return (
     <>
-      <div className="content-shell pb-20 pt-[1.9rem]">
+      <div className="content-shell pb-20">
         <header className="mb-[2.3rem]">
           <BrandHeading as="h1" variant="page">
             Interviews

@@ -1,3 +1,4 @@
+import { LoadingTransitionProvider } from "components/content/loading-transition";
 import { CartProvider } from "components/cart/cart-context";
 import { Navbar } from "components/layout/navbar";
 import { getCart } from "lib/shopify";
@@ -50,10 +51,12 @@ export default async function RootLayout({
       <body className="bg-black text-white selection:bg-[#7594d52e] selection:text-white">
         <CartProvider cartPromise={cart}>
           <Navbar />
-          <main className="pt-4">
-            {children}
-            <Toaster closeButton />
-          </main>
+          <LoadingTransitionProvider>
+            <main className="pt-4">
+              {children}
+              <Toaster closeButton />
+            </main>
+          </LoadingTransitionProvider>
         </CartProvider>
       </body>
     </html>

@@ -24,10 +24,10 @@ export function ContentBreadcrumb({
       aria-label="Breadcrumb"
       className={`${dax.className} text-base text-[#979797] uppercase`}
     >
-      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+      <ol className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <li>
-          <Link href="/" className="hover:text-white">
-            ERROR404
+          <Link href="/" aria-label="Home" className="hover:text-white">
+            HOME
           </Link>
         </li>
         <li aria-hidden="true">/</li>
