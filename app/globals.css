@@ -574,8 +574,10 @@ h2,
     flex-basis: 75%;
     width: 75%;
   }
+  .section-title,
   .section-title.carousel-title,
-  #home-events-title {
+  .section-title.newsletter-title,
+  .content-title {
     font-size: 1.755rem;
     line-height: 1.89rem;
   }

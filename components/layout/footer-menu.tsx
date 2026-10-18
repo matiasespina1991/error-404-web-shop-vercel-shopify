@@ -8,6 +8,7 @@ export function FooterMenuItem({ item }: { item: Menu }) {
         href={item.path}
         className="inline-block py-1 leading-tight text-neutral-400"
         showActiveUnderline={false}
+        highlightActive={false}
       >
         {item.title}
       </NavLink>

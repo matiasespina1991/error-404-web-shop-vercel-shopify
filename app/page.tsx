@@ -129,7 +129,7 @@ export default async function HomePage() {
       <ContentRail
         title="Shop"
         uppercaseTitle={false}
-        className="!pt-0"
+        className="!pt-2 md:!pt-0"
         link={
           <Link href="/shop" className="hover:text-white">
             To the shop <LinkArrow />
@@ -167,7 +167,7 @@ export default async function HomePage() {
       </ContentRail>
       <ContentRail
         title="Interviews"
-        className="!pt-0"
+        className="!pt-2 md:!pt-0"
         uppercaseTitle={false}
         link={
           <Link href="/interviews" className="hover:text-white">

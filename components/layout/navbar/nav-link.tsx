@@ -8,10 +8,12 @@ export default function NavLink({
   href,
   className = "",
   showActiveUnderline = true,
+  highlightActive = true,
   ...props
 }: Omit<ComponentProps<typeof Link>, "href"> & {
   href: string;
   showActiveUnderline?: boolean;
+  highlightActive?: boolean;
 }) {
   const pathname = usePathname();
   const active =
@@ -27,7 +29,7 @@ export default function NavLink({
       {...props}
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`nav-menu-link ${className} decoration-[0.6px] underline-offset-4 ${active ? "text-white" : ""} ${active && showActiveUnderline ? "underline" : "no-underline"}`}
+      className={`nav-menu-link ${className} decoration-[0.6px] underline-offset-4 ${active && highlightActive ? "text-white" : ""} ${active && showActiveUnderline ? "underline" : "no-underline"}`}
     />
   );
 }

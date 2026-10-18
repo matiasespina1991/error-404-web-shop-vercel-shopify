@@ -45,9 +45,6 @@ export function ReleaseCard({
           {releaseFormatLabel(release.format)}
           {release.genres.length ? ` · ${release.genres.join(" / ")}` : ""}
         </p>
-        <p className="release-summary mt-1 line-clamp-2 carousel-preview text-sm text-neutral-400">
-          {release.summary}
-        </p>
       </div>
     </Link>
   );
