@@ -50,59 +50,6 @@ export default async function HomePage() {
   return (
     <>
       <h1 className="sr-only">Error404 — Records, interviews and events</h1>
-      <section className="content-section" aria-labelledby="home-events-title">
-        <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 md:justify-start">
-          <BrandHeading id="home-events-title">Next Events</BrandHeading>
-          <Link
-            href="/events"
-            className="section-link ml-auto whitespace-nowrap text-neutral-300 hover:text-white md:ml-0"
-          >
-            See all events <LinkArrow />
-          </Link>
-        </div>
-        <div
-          className={`grid items-start gap-8 lg:gap-12 ${nextEvent?.cover ? "lg:grid-cols-[340px_minmax(0,1fr)]" : ""}`}
-        >
-          {nextEvent?.cover && (
-            <figure className="mx-auto w-[95%] md:w-full md:max-w-[340px] lg:mx-0">
-              <Link
-                href={`/events/${nextEvent.slug}`}
-                aria-label={`View ${nextEvent.title}`}
-                className="block overflow-hidden"
-              >
-                <img
-                  src={contentImageUrl(nextEvent.cover.id)}
-                  alt={nextEvent.cover.alt}
-                  fetchPriority="high"
-                  className="w-full object-contain object-center md:max-h-[420px] lg:object-left"
-                />
-              </Link>
-              <figcaption className="font-condensed mt-3 text-center text-sm">
-                <h2 className="event-list-title text-sm font-medium tracking-tight md:text-base">
-                  <Link
-                    href={`/events/${nextEvent.slug}`}
-                    className="text-[1.15rem] hover:underline"
-                  >
-                    {nextEvent.title.toUpperCase()}
-                  </Link>
-                </h2>
-                <p className="mt-1 text-xs text-neutral-400">
-                  <time dateTime={nextEvent.startsAt}>
-                    {eventDate(nextEvent)}
-                  </time>
-                  {" · "}
-                  {nextEvent.venue} · {nextEvent.city}
-                </p>
-              </figcaption>
-            </figure>
-          )}
-          {(followingEvents.length > 0 || !nextEvent?.cover) && (
-            <div className="min-w-0">
-              <EventList events={followingEvents} compact />
-            </div>
-          )}
-        </div>
-      </section>
       <ContentRail
         title="Releases"
         uppercaseTitle={false}
@@ -165,6 +112,59 @@ export default async function HomePage() {
           </li>
         ))}
       </ContentRail>
+      <section className="content-section" aria-labelledby="home-events-title">
+        <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 md:justify-start">
+          <BrandHeading id="home-events-title">Next Events</BrandHeading>
+          <Link
+            href="/events"
+            className="section-link ml-auto whitespace-nowrap text-neutral-300 hover:text-white md:ml-0"
+          >
+            See all events <LinkArrow />
+          </Link>
+        </div>
+        <div
+          className={`grid items-start gap-8 lg:gap-12 ${nextEvent?.cover ? "lg:grid-cols-[340px_minmax(0,1fr)]" : ""}`}
+        >
+          {nextEvent?.cover && (
+            <figure className="mx-auto w-[95%] md:w-full md:max-w-[340px] lg:mx-0">
+              <Link
+                href={`/events/${nextEvent.slug}`}
+                aria-label={`View ${nextEvent.title}`}
+                className="block overflow-hidden"
+              >
+                <img
+                  src={contentImageUrl(nextEvent.cover.id)}
+                  alt={nextEvent.cover.alt}
+                  fetchPriority="high"
+                  className="w-full object-contain object-center md:max-h-[420px] lg:object-left"
+                />
+              </Link>
+              <figcaption className="font-condensed mt-3 text-center text-sm">
+                <h2 className="event-list-title text-sm font-medium tracking-tight md:text-base">
+                  <Link
+                    href={`/events/${nextEvent.slug}`}
+                    className="text-[1.15rem] hover:underline"
+                  >
+                    {nextEvent.title.toUpperCase()}
+                  </Link>
+                </h2>
+                <p className="mt-1 text-xs text-neutral-400">
+                  <time dateTime={nextEvent.startsAt}>
+                    {eventDate(nextEvent)}
+                  </time>
+                  {" · "}
+                  {nextEvent.venue} · {nextEvent.city}
+                </p>
+              </figcaption>
+            </figure>
+          )}
+          {(followingEvents.length > 0 || !nextEvent?.cover) && (
+            <div className="min-w-0">
+              <EventList events={followingEvents} compact />
+            </div>
+          )}
+        </div>
+      </section>
       <ContentRail
         title="Interviews"
         className="!pt-2 md:!pt-0"
