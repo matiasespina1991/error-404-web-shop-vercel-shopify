@@ -19,9 +19,9 @@ export async function generateMetadata() {
     getContentPage("interviews"),
   ]);
   return {
-    title: "Error404 — Records, people & dance floors",
+    title: "Error404 — Releases, Events and more",
     description:
-      "Independent electronic music. Discover new records, interviews and upcoming Error404 events.",
+      "Discover new records, interviews and upcoming Error404 events.",
     robots: {
       index: events.source !== "mock" && interviews.source !== "mock",
       follow: true,

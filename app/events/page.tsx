@@ -8,7 +8,7 @@ export async function generateMetadata() {
   const page = await getContentPage("events");
   return {
     title: "Events",
-    description: "Error404 events, line-ups and dance floors.",
+    description: "Discover our last events.",
     robots: { index: page.source !== "mock", follow: true },
   };
 }
