@@ -83,7 +83,7 @@ export default async function ReleasePage({ params }: Props) {
                   <dd>{release.genres.join(" / ")}</dd>
                 </div>
               )}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 mt-2">
                 <dt>
                   <span className="sr-only">Format</span>
                   <DiscIcon className="size-4 text-neutral-400" />
