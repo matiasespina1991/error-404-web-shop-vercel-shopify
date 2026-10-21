@@ -2,7 +2,7 @@
 export default function AboutError({ reset }: { reset: () => void }) {
   return (
     <div className="mx-auto max-w-xl px-4 py-16">
-      <h1 className="mb-4 text-3xl">About</h1>
+      <h1 className="mb-4 text-3xl">About us</h1>
       <p className="mb-6 text-neutral-400">
         We couldn’t load this page. Please try again.
       </p>

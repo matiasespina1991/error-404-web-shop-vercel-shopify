@@ -4,7 +4,7 @@ export default function AboutLoading() {
   return (
     <SkeletonTransition
       role="status"
-      aria-label="Loading About"
+      aria-label="Loading About us"
       className="content-shell pb-20"
     >
       <div

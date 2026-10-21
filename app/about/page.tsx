@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getPublishedAbout();
   return {
-    title: content?.title || "About",
+    title: "About us",
     description: content?.seoDescription || content?.intro || "About Error404.",
     robots: content
       ? { index: true, follow: true }
@@ -21,13 +21,13 @@ export default async function AboutPage() {
     <>
       <article className="content-shell pb-20 ">
         <BrandHeading as="h1" variant="page" className="mb-6">
-          {content?.title || "About"}
+          About us
         </BrandHeading>
         {content ? (
           <>
-            <p className="mb-10 max-w-3xl whitespace-pre-line text-xl font-light leading-relaxed text-neutral-300 md:text-2xl">
+            {/* <p className="mb-10 max-w-3xl whitespace-pre-line text-xl font-light leading-relaxed text-neutral-300 md:text-2xl">
               {content.intro}
-            </p>
+            </p> */}
             {content.imageId && (
               <img
                 src={aboutImageUrl(content.imageId)}
@@ -38,7 +38,7 @@ export default async function AboutPage() {
             <RichText
               body={content.body}
               format={content.bodyFormat}
-              className="max-w-2xl text-base font-normal leading-[1.5] text-neutral-300"
+              className="max-w-xl text-base font-normal leading-[1.5] text-neutral-300"
             />
           </>
         ) : (

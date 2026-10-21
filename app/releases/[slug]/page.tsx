@@ -75,10 +75,14 @@ export default async function ReleasePage({ params }: Props) {
                 release.title
               )}
             </BrandHeading>
-            <p className="release-summary mt-5 max-w-2xl text-base leading-snug text-neutral-300">
-              {release.summary}
-            </p>
-            <dl className="mt-5 space-y-2 text-sm">
+
+            <dl className="mt-2 space-y-2 text-sm">
+              {release.genres.length > 0 && (
+                <div className="flex gap-3">
+                  <dt className="text-neutral-400">Genres</dt>
+                  <dd>{release.genres.join(" / ")}</dd>
+                </div>
+              )}
               <div className="flex items-center gap-2">
                 <dt>
                   <span className="sr-only">Format</span>
@@ -88,12 +92,14 @@ export default async function ReleasePage({ params }: Props) {
                   {releaseFormatLabel(release.format)}
                 </dd>
               </div>
-              {release.genres.length > 0 && (
-                <div className="flex gap-3">
-                  <dt className="text-neutral-400">Genres</dt>
-                  <dd>{release.genres.join(" / ")}</dd>
-                </div>
-              )}
+
+              <section className="mt-5" aria-labelledby="release-content">
+                <RichText
+                  body={release.body}
+                  format={release.bodyFormat}
+                  className="release-body max-w-2xl text-base leading-[1.5] text-neutral-300"
+                />
+              </section>
             </dl>
             {release.purchaseUrl && (
               <a
@@ -101,6 +107,7 @@ export default async function ReleasePage({ params }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="content-button mt-6"
+                style={{ color: "#fff" }}
               >
                 Buy release <LinkArrow />
               </a>
@@ -110,16 +117,6 @@ export default async function ReleasePage({ params }: Props) {
                 Tracklist
               </h2>
               <ReleaseTrackPlayer tracks={release.tracks} />
-            </section>
-            <section className="mt-8" aria-labelledby="release-content">
-              <h2 id="release-content" className="mb-5 text-sm">
-                About the release
-              </h2>
-              <RichText
-                body={release.body}
-                format={release.bodyFormat}
-                className="release-body max-w-2xl text-base leading-[1.5] text-neutral-300"
-              />
             </section>
           </div>
         </div>

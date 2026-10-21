@@ -4,5 +4,5 @@ export const siteNavigation = [
   { title: "Shop", path: "/shop" },
   { title: "Events", path: "/events" },
   { title: "Interviews", path: "/interviews" },
-  { title: "About", path: "/about" },
+  { title: "About us", path: "/about" },
 ];
